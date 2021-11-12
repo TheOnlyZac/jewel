@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D50924A0-FFB6-4241-8A00-43A93C545336}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Sly2Multiplayer</RootNamespace>
-    <AssemblyName>Sly2Multiplayer</AssemblyName>
+    <RootNamespace>Jewel</RootNamespace>
+    <AssemblyName>Jewel</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -94,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <None Include="packages.config" />

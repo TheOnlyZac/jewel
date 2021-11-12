@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sly2Multiplayer
+namespace Jewel
 {
     static class Program
     {

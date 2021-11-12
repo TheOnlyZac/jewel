@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jewel", "Sly2Multiplayer\Jewel.csproj", "{D50924A0-FFB6-4241-8A00-43A93C545336}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jewel", "Jewel\Jewel.csproj", "{D50924A0-FFB6-4241-8A00-43A93C545336}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

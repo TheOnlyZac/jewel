@@ -1,4 +1,4 @@
-﻿namespace Sly2Multiplayer
+﻿namespace Jewel
 {
     partial class Form1
     {

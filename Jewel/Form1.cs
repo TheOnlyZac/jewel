@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Memory;
 
-namespace Sly2Multiplayer
+namespace Jewel
 {
     public partial class Form1 : Form
     {
@@ -89,7 +89,7 @@ namespace Sly2Multiplayer
         }
 
         // initialize entity pointers
-        private Entity jt, bentley;
+        private Entity jt, bentley, murray;
 
         private  void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
