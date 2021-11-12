@@ -190,7 +190,7 @@ namespace Jewel
             }
         }
 
-        // Handle change selected entity
+        // Handle change selected FKX
         private void FkxListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = FkxListbox.SelectedIndex;
@@ -199,28 +199,28 @@ namespace Jewel
             for (uint i = 0; i < fkx.poolSize; i++)
             {
                 uint entityPtr = Rebase(fkx.poolArray + (0x4 * i));
-                Console.WriteLine(m.ReadUInt(entityPtr.ToString("X")).ToString("X"));
                 allEntities.Add(new Entity(m.ReadUInt(entityPtr.ToString("X"))));
             }
         }
 
+        // Handle change selected Entity
         private void EntityListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedEntity = (Entity)EntityListBox.SelectedItem;
-            //Console.WriteLine(selectedEntity.getPointer().ToString("X"));
         }
 
+        // Handle refresh button click
         private void FkxRefreshBtn_Click(object sender, EventArgs e)
         {
             this.FindFkxEntries();
-            // Set FK$X entries listbox data source
+            // Update FK$X listbox data source
             FkxListbox.Invoke((MethodInvoker)delegate
             {
                 FkxListbox.DataSource = fkxEntries;
                 FkxListbox.DisplayMember = "name";
             });
 
-            // Set FK$X entries listbox data source
+            // Update entities listbox data source
             EntityListBox.Invoke((MethodInvoker)delegate
             {
                 EntityListBox.DataSource = allEntities;
@@ -228,6 +228,7 @@ namespace Jewel
             });
         }
 
+        // Handle warp to selected button click
         private void WarpToSelected_Click(object sender, EventArgs e)
         {
             jt.transform.position.X = selectedEntity.transform.position.Z;
@@ -235,6 +236,7 @@ namespace Jewel
             jt.transform.position.Z = selectedEntity.transform.position.Z;
         }
 
+        // Background worker (trainer logic)
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             int pID;
