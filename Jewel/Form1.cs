@@ -83,12 +83,14 @@ namespace Jewel
             private static uint oScaleX = 0x0;
             private static uint oScaleY = 0x4;
             private static uint oScaleZ = 0x8;
-            private static uint oPosition = 0x30;
+            private static uint oRelPosition = 0x30;
+            private static uint oTruePosition = 0x70;
 
             public Vector scaleX;
             public Vector scaleY;
             public Vector scaleZ;
-            public Vector position;
+            public Vector relPosition;
+            public Vector truePosition;
 
             // Constructor
             public Transform(uint pTransform)
@@ -97,7 +99,8 @@ namespace Jewel
                 this.scaleX = new Vector((pointer + oScaleX));
                 this.scaleY = new Vector((pointer + oScaleY));
                 this.scaleZ = new Vector((pointer + oScaleZ));
-                this.position = new Vector((pointer + oPosition));
+                this.relPosition = new Vector((pointer + oRelPosition));
+                this.truePosition = new Vector((pointer + oTruePosition));
             }
 
             public uint getPointer() { return pointer; }
@@ -187,7 +190,7 @@ namespace Jewel
             });
 
             fkxEntries.Clear();
-            IEnumerable<long> AoBScanResults = await m.AoBScan(0x00000000, 0x21ffffff, "00 00 00 00 01 00 00 00 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 46 4B 24 58", false, true, false);
+            IEnumerable<long> AoBScanResults = await m.AoBScan(0x20000000, 0x21ffffff, "46 4B 24 58", false, true, false);
             int numResults = AoBScanResults.Count();
 
             // update progress bar
@@ -199,7 +202,7 @@ namespace Jewel
             // Add each found FKX entry to the fkxentries list
             foreach (long result in AoBScanResults)
             {
-                FkxEntry fkx = new FkxEntry((uint)(result) + 0x4);
+                FkxEntry fkx = new FkxEntry((uint)(result) - 0x1c);
                 fkxEntries.Add(fkx);
             }
 
@@ -210,18 +213,21 @@ namespace Jewel
 
             foreach(FkxEntry fkx in fkxEntries)
             {
-                // Create FKX node
-                TreeNode fkxNode = new TreeNode(fkx.name);
+                Console.WriteLine(String.Format("On {0}", fkx.name));
 
-                // Attach FKX entry to node
+                // Create node with FKX entry attached
+                TreeNode fkxNode = new TreeNode(fkx.name);
                 fkxNode.Tag = fkx;
 
                 // Add node to tree
                 treeView1.Nodes.Add(fkxNode);
 
                 // If this entity is fishy, don't populate it's entity nodes
-                if (fkx.poolArray == 0x0 || fkx.poolSize > 63) continue;
-
+                if (fkx.poolArray == 0x0 || fkx.poolSize > 127)
+                {
+                    Console.WriteLine(String.Format("Skipping {0}", fkx.name));
+                    continue;
+                }
                 // Add Entity nodes as subnodes to FKX entries
                 for(uint i = 0; i < fkx.poolSize; i++)
                 {
@@ -277,9 +283,9 @@ namespace Jewel
         // Handle warp to selected button click
         private void WarpToSelected_Click(object sender, EventArgs e)
         {
-            jt.transform.position.X = selectedEntity.transform.position.Z;
-            jt.transform.position.Y = selectedEntity.transform.position.Y;
-            jt.transform.position.Z = selectedEntity.transform.position.Z;
+            jt.transform.relPosition.X = selectedEntity.transform.truePosition.X;
+            jt.transform.relPosition.Y = selectedEntity.transform.truePosition.Y;
+            jt.transform.relPosition.Z = selectedEntity.transform.truePosition.Z;
         }
 
         // Background worker (trainer logic)
@@ -343,15 +349,15 @@ namespace Jewel
                     {
                         XPosLabel.Invoke((MethodInvoker)delegate
                         {
-                            XPosLabel.Text = selectedEntity.transform.position.X.ToString();
+                            XPosLabel.Text = selectedEntity.transform.truePosition.X.ToString();
                         });
                         YPosLabel.Invoke((MethodInvoker)delegate
                         {
-                            YPosLabel.Text = selectedEntity.transform.position.Y.ToString();
+                            YPosLabel.Text = selectedEntity.transform.truePosition.Y.ToString();
                         });
                         ZPosLabel.Invoke((MethodInvoker)delegate
                         {
-                            ZPosLabel.Text = selectedEntity.transform.position.Z.ToString();
+                            ZPosLabel.Text = selectedEntity.transform.truePosition.Z.ToString();
                         });
                     }
                 }
