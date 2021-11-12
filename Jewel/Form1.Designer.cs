@@ -41,7 +41,7 @@
             this.FkxListbox = new System.Windows.Forms.ListBox();
             this.FkxRefreshBtn = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.EntityNameLabel = new System.Windows.Forms.Label();
+            this.EntityIdLabel = new System.Windows.Forms.Label();
             this.EntityListBox = new System.Windows.Forms.ListBox();
             this.WarpToSelected = new System.Windows.Forms.Button();
             this.FooterPanel.SuspendLayout();
@@ -195,7 +195,7 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.splitContainer1.Panel2.Controls.Add(this.WarpToSelected);
-            this.splitContainer1.Panel2.Controls.Add(this.EntityNameLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.EntityIdLabel);
             this.splitContainer1.Panel2.Controls.Add(this.YPosTitle);
             this.splitContainer1.Panel2.Controls.Add(this.ZPosLabel);
             this.splitContainer1.Panel2.Controls.Add(this.XPosTitle);
@@ -206,15 +206,15 @@
             this.splitContainer1.SplitterDistance = 259;
             this.splitContainer1.TabIndex = 8;
             // 
-            // EntityNameLabel
+            // EntityIdLabel
             // 
-            this.EntityNameLabel.AutoSize = true;
-            this.EntityNameLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.EntityNameLabel.Location = new System.Drawing.Point(14, 15);
-            this.EntityNameLabel.Name = "EntityNameLabel";
-            this.EntityNameLabel.Size = new System.Drawing.Size(119, 23);
-            this.EntityNameLabel.TabIndex = 6;
-            this.EntityNameLabel.Text = "$entityName";
+            this.EntityIdLabel.AutoSize = true;
+            this.EntityIdLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.EntityIdLabel.Location = new System.Drawing.Point(14, 15);
+            this.EntityIdLabel.Name = "EntityIdLabel";
+            this.EntityIdLabel.Size = new System.Drawing.Size(85, 23);
+            this.EntityIdLabel.TabIndex = 6;
+            this.EntityIdLabel.Text = "$entityId";
             // 
             // EntityListBox
             // 
@@ -274,7 +274,7 @@
         private System.Windows.Forms.ListBox FkxListbox;
         private System.Windows.Forms.Button FkxRefreshBtn;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label EntityNameLabel;
+        private System.Windows.Forms.Label EntityIdLabel;
         private System.Windows.Forms.ListBox EntityListBox;
         private System.Windows.Forms.Button WarpToSelected;
     }

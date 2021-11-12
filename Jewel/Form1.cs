@@ -207,6 +207,11 @@ namespace Jewel
         private void EntityListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedEntity = (Entity)EntityListBox.SelectedItem;
+
+            EntityIdLabel.Invoke((MethodInvoker)delegate
+            {
+                EntityIdLabel.Text = selectedEntity.id.ToString("X");
+            });
         }
 
         // Handle refresh button click
