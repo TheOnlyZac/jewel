@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,8 @@ namespace Jewel
     {
         // initialize global vars
         private Entity jt, selectedEntity;
-        private BindingList<FkxEntry> fkxEntries = new BindingList<FkxEntry>();
-        private BindingList<Entity> allEntities = new BindingList<Entity>();
+        private ArrayList fkxEntries = new ArrayList();
+        private ArrayList allEntities = new ArrayList();
 
         // Constructor
         public Form1()
@@ -178,39 +179,80 @@ namespace Jewel
         // Populate fkxentries list with all FKX entries in ram
         public async void FindFkxEntries()
         {
-            fkxEntries.Clear();
-            IEnumerable<long> AoBScanResults = await m.AoBScan("46 4B 24 58", false, true, false);
+            // start progress bar
+            progressBar1.Invoke((MethodInvoker)delegate
+            {
+                progressBar1.Maximum = 100;
+                progressBar1.Value = 10;
+            });
 
-            Console.WriteLine(AoBScanResults.Count());
+            fkxEntries.Clear();
+            IEnumerable<long> AoBScanResults = await m.AoBScan(0x00000000, 0x21ffffff, "00 00 00 00 01 00 00 00 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 46 4B 24 58", false, true, false);
+            int numResults = AoBScanResults.Count();
+
+            // update progress bar
+            progressBar1.Invoke((MethodInvoker)delegate
+            {
+                progressBar1.Maximum = numResults+10;
+            });
+
             // Add each found FKX entry to the fkxentries list
             foreach (long result in AoBScanResults)
             {
-                FkxEntry fkx = new FkxEntry((uint)(result) - 0x1c);
+                FkxEntry fkx = new FkxEntry((uint)(result) + 0x4);
                 fkxEntries.Add(fkx);
             }
-        }
 
-        // Handle change selected FKX
-        private void FkxListbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = FkxListbox.SelectedIndex;
-            allEntities.Clear();
-            FkxEntry fkx = (FkxEntry)FkxListbox.SelectedItem;
-            for (uint i = 0; i < fkx.poolSize; i++)
+            // Set wait cursor and pause treeView update
+            Cursor.Current = Cursors.WaitCursor;
+            treeView1.BeginUpdate();
+            treeView1.Nodes.Clear();
+
+            foreach(FkxEntry fkx in fkxEntries)
             {
-                uint entityPtr = Rebase(fkx.poolArray + (0x4 * i));
-                allEntities.Add(new Entity(m.ReadUInt(entityPtr.ToString("X"))));
+                // Create FKX node
+                TreeNode fkxNode = new TreeNode(fkx.name);
+
+                // Attach FKX entry to node
+                fkxNode.Tag = fkx;
+
+                // Add node to tree
+                treeView1.Nodes.Add(fkxNode);
+
+                // If this entity is fishy, don't populate it's entity nodes
+                if (fkx.poolArray == 0x0 || fkx.poolSize > 63) continue;
+
+                // Add Entity nodes as subnodes to FKX entries
+                for(uint i = 0; i < fkx.poolSize; i++)
+                {
+                    // Create entity node
+                    uint entityPtr = m.ReadUInt(Rebase(fkx.poolArray + (0x4 * i)).ToString("X"));
+                    TreeNode entityNode = new TreeNode(entityPtr.ToString("X"));
+
+                    // Attach entity to node
+                    entityNode.Tag = new Entity(entityPtr);
+
+                    // Add node to tree
+                    treeView1.Nodes[fkxEntries.IndexOf(fkx)].Nodes.Add(entityNode);
+                }
+
+                // Update progress bar
+                progressBar1.Invoke((MethodInvoker)delegate
+                {
+                    progressBar1.Value += 1;
+                });
             }
-        }
 
-        // Handle change selected Entity
-        private void EntityListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            selectedEntity = (Entity)EntityListBox.SelectedItem;
+            // Reset cursor and re-enable treeView update
+            treeView1.Sort();
+            Cursor.Current = Cursors.Default;
+            treeView1.EndUpdate();
 
-            EntityIdLabel.Invoke((MethodInvoker)delegate
+            // Reset progress bar
+            progressBar1.Invoke((MethodInvoker)delegate
             {
-                EntityIdLabel.Text = selectedEntity.id.ToString("X");
+                progressBar1.Maximum = 100;
+                progressBar1.Value = 0;
             });
         }
 
@@ -218,18 +260,17 @@ namespace Jewel
         private void FkxRefreshBtn_Click(object sender, EventArgs e)
         {
             this.FindFkxEntries();
-            // Update FK$X listbox data source
-            FkxListbox.Invoke((MethodInvoker)delegate
-            {
-                FkxListbox.DataSource = fkxEntries;
-                FkxListbox.DisplayMember = "name";
-            });
+        }
 
-            // Update entities listbox data source
-            EntityListBox.Invoke((MethodInvoker)delegate
+        // Hangle treelist select
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            EntityIdLabel.Invoke((MethodInvoker)delegate
             {
-                EntityListBox.DataSource = allEntities;
-                EntityListBox.DisplayMember = "id";
+                if (e.Node.Tag is Entity)
+                {
+                    selectedEntity = e.Node.Tag as Entity;
+                }
             });
         }
 
@@ -290,23 +331,29 @@ namespace Jewel
                 {
                     jt = new Entity(m.ReadUInt("202e1e40"));
                 }
-                
+
                 // write selected entity position to ui
                 if (selectedEntity != null)
                 {
-                    XPosLabel.Invoke((MethodInvoker)delegate
+                    EntityIdLabel.Invoke((MethodInvoker)delegate
                     {
-                        XPosLabel.Text = selectedEntity.transform.position.X.ToString();
+                        EntityIdLabel.Text = selectedEntity.getPointer().ToString("X");
                     });
-                    YPosLabel.Invoke((MethodInvoker)delegate
+                    if (selectedEntity.transform != null)
                     {
-                        YPosLabel.Text = selectedEntity.transform.position.Y.ToString();
-                    });
-                    ZPosLabel.Invoke((MethodInvoker)delegate
-                    {
-                        ZPosLabel.Text = selectedEntity.transform.position.Z.ToString();
-                    });
-
+                        XPosLabel.Invoke((MethodInvoker)delegate
+                        {
+                            XPosLabel.Text = selectedEntity.transform.position.X.ToString();
+                        });
+                        YPosLabel.Invoke((MethodInvoker)delegate
+                        {
+                            YPosLabel.Text = selectedEntity.transform.position.Y.ToString();
+                        });
+                        ZPosLabel.Invoke((MethodInvoker)delegate
+                        {
+                            ZPosLabel.Text = selectedEntity.transform.position.Z.ToString();
+                        });
+                    }
                 }
             }
         }

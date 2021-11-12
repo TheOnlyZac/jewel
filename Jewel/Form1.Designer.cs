@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ProcIdTitle = new System.Windows.Forms.Label();
             this.ProcIdLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.XPosTitle = new System.Windows.Forms.Label();
             this.FooterPanel = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.XPosLabel = new System.Windows.Forms.Label();
             this.YPosTitle = new System.Windows.Forms.Label();
             this.YPosLabel = new System.Windows.Forms.Label();
             this.ZPosTitle = new System.Windows.Forms.Label();
             this.ZPosLabel = new System.Windows.Forms.Label();
-            this.FkxListbox = new System.Windows.Forms.ListBox();
             this.FkxRefreshBtn = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.EntityIdLabel = new System.Windows.Forms.Label();
-            this.EntityListBox = new System.Windows.Forms.ListBox();
+            this.EntitiesTitle = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.WarpToSelected = new System.Windows.Forms.Button();
+            this.EntityIdLabel = new System.Windows.Forms.Label();
             this.FooterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -93,12 +95,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FooterPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.FooterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FooterPanel.Controls.Add(this.progressBar1);
             this.FooterPanel.Controls.Add(this.ProcIdLabel);
             this.FooterPanel.Controls.Add(this.ProcIdTitle);
-            this.FooterPanel.Location = new System.Drawing.Point(-3, 276);
+            this.FooterPanel.Location = new System.Drawing.Point(-3, 344);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(563, 20);
+            this.FooterPanel.Size = new System.Drawing.Size(552, 20);
             this.FooterPanel.TabIndex = 4;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(387, 2);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(160, 13);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 8;
             // 
             // XPosLabel
             // 
@@ -150,29 +161,16 @@
             this.ZPosLabel.TabIndex = 5;
             this.ZPosLabel.Text = "$zPos";
             // 
-            // FkxListbox
-            // 
-            this.FkxListbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FkxListbox.FormattingEnabled = true;
-            this.FkxListbox.Location = new System.Drawing.Point(0, 25);
-            this.FkxListbox.Name = "FkxListbox";
-            this.FkxListbox.Size = new System.Drawing.Size(127, 251);
-            this.FkxListbox.Sorted = true;
-            this.FkxListbox.TabIndex = 6;
-            this.FkxListbox.SelectedIndexChanged += new System.EventHandler(this.FkxListbox_SelectedIndexChanged);
-            // 
             // FkxRefreshBtn
             // 
-            this.FkxRefreshBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FkxRefreshBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FkxRefreshBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FkxRefreshBtn.BackgroundImage")));
+            this.FkxRefreshBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.FkxRefreshBtn.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.FkxRefreshBtn.Location = new System.Drawing.Point(4, 2);
+            this.FkxRefreshBtn.Location = new System.Drawing.Point(4, 3);
             this.FkxRefreshBtn.Name = "FkxRefreshBtn";
-            this.FkxRefreshBtn.Size = new System.Drawing.Size(249, 23);
+            this.FkxRefreshBtn.Size = new System.Drawing.Size(20, 20);
             this.FkxRefreshBtn.TabIndex = 7;
-            this.FkxRefreshBtn.Text = "Refresh";
             this.FkxRefreshBtn.UseVisualStyleBackColor = true;
             this.FkxRefreshBtn.Click += new System.EventHandler(this.FkxRefreshBtn_Click);
             // 
@@ -181,19 +179,20 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.BackColor = System.Drawing.Color.Transparent;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.splitContainer1.Panel1.Controls.Add(this.EntityListBox);
-            this.splitContainer1.Panel1.Controls.Add(this.FkxListbox);
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel1.Controls.Add(this.EntitiesTitle);
             this.splitContainer1.Panel1.Controls.Add(this.FkxRefreshBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
             this.splitContainer1.Panel2.Controls.Add(this.WarpToSelected);
             this.splitContainer1.Panel2.Controls.Add(this.EntityIdLabel);
             this.splitContainer1.Panel2.Controls.Add(this.YPosTitle);
@@ -202,32 +201,31 @@
             this.splitContainer1.Panel2.Controls.Add(this.ZPosTitle);
             this.splitContainer1.Panel2.Controls.Add(this.XPosLabel);
             this.splitContainer1.Panel2.Controls.Add(this.YPosLabel);
-            this.splitContainer1.Size = new System.Drawing.Size(560, 277);
-            this.splitContainer1.SplitterDistance = 259;
+            this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainer1.Size = new System.Drawing.Size(549, 345);
+            this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 8;
             // 
-            // EntityIdLabel
+            // EntitiesTitle
             // 
-            this.EntityIdLabel.AutoSize = true;
-            this.EntityIdLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.EntityIdLabel.Location = new System.Drawing.Point(14, 15);
-            this.EntityIdLabel.Name = "EntityIdLabel";
-            this.EntityIdLabel.Size = new System.Drawing.Size(85, 23);
-            this.EntityIdLabel.TabIndex = 6;
-            this.EntityIdLabel.Text = "$entityId";
+            this.EntitiesTitle.AutoSize = true;
+            this.EntitiesTitle.Font = new System.Drawing.Font("Arial", 12F);
+            this.EntitiesTitle.Location = new System.Drawing.Point(26, 4);
+            this.EntitiesTitle.Name = "EntitiesTitle";
+            this.EntitiesTitle.Size = new System.Drawing.Size(118, 18);
+            this.EntitiesTitle.TabIndex = 9;
+            this.EntitiesTitle.Text = "Loaded Entities";
             // 
-            // EntityListBox
+            // treeView1
             // 
-            this.EntityListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EntityListBox.FormattingEnabled = true;
-            this.EntityListBox.Location = new System.Drawing.Point(125, 25);
-            this.EntityListBox.Name = "EntityListBox";
-            this.EntityListBox.Size = new System.Drawing.Size(133, 251);
-            this.EntityListBox.Sorted = true;
-            this.EntityListBox.TabIndex = 8;
-            this.EntityListBox.SelectedIndexChanged += new System.EventHandler(this.EntityListBox_SelectedIndexChanged);
+            this.treeView1.Location = new System.Drawing.Point(0, 25);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(197, 319);
+            this.treeView1.TabIndex = 8;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // WarpToSelected
             // 
@@ -239,11 +237,22 @@
             this.WarpToSelected.UseVisualStyleBackColor = true;
             this.WarpToSelected.Click += new System.EventHandler(this.WarpToSelected_Click);
             // 
+            // EntityIdLabel
+            // 
+            this.EntityIdLabel.AutoSize = true;
+            this.EntityIdLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.EntityIdLabel.Location = new System.Drawing.Point(14, 15);
+            this.EntityIdLabel.Name = "EntityIdLabel";
+            this.EntityIdLabel.Size = new System.Drawing.Size(85, 23);
+            this.EntityIdLabel.TabIndex = 6;
+            this.EntityIdLabel.Text = "$entityId";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 296);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(547, 364);
             this.Controls.Add(this.FooterPanel);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
@@ -251,6 +260,7 @@
             this.FooterPanel.ResumeLayout(false);
             this.FooterPanel.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -271,12 +281,13 @@
         private System.Windows.Forms.Label YPosLabel;
         private System.Windows.Forms.Label ZPosTitle;
         private System.Windows.Forms.Label ZPosLabel;
-        private System.Windows.Forms.ListBox FkxListbox;
         private System.Windows.Forms.Button FkxRefreshBtn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label EntityIdLabel;
-        private System.Windows.Forms.ListBox EntityListBox;
         private System.Windows.Forms.Button WarpToSelected;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Label EntitiesTitle;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
