@@ -44,7 +44,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.EntitiesTitle = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.WarpToSelected = new System.Windows.Forms.Button();
+            this.SetCamFocusBtn = new System.Windows.Forms.Button();
+            this.WarpToBtn = new System.Windows.Forms.Button();
             this.EntityIdLabel = new System.Windows.Forms.Label();
             this.FooterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -100,12 +101,13 @@
             this.FooterPanel.Controls.Add(this.ProcIdTitle);
             this.FooterPanel.Location = new System.Drawing.Point(-3, 344);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(552, 20);
+            this.FooterPanel.Size = new System.Drawing.Size(394, 20);
             this.FooterPanel.TabIndex = 4;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(387, 2);
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(229, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(160, 13);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -193,7 +195,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.Controls.Add(this.WarpToSelected);
+            this.splitContainer1.Panel2.Controls.Add(this.SetCamFocusBtn);
+            this.splitContainer1.Panel2.Controls.Add(this.WarpToBtn);
             this.splitContainer1.Panel2.Controls.Add(this.EntityIdLabel);
             this.splitContainer1.Panel2.Controls.Add(this.YPosTitle);
             this.splitContainer1.Panel2.Controls.Add(this.ZPosLabel);
@@ -202,8 +205,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.XPosLabel);
             this.splitContainer1.Panel2.Controls.Add(this.YPosLabel);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitContainer1.Size = new System.Drawing.Size(549, 345);
-            this.splitContainer1.SplitterDistance = 200;
+            this.splitContainer1.Size = new System.Drawing.Size(391, 345);
+            this.splitContainer1.SplitterDistance = 223;
             this.splitContainer1.TabIndex = 8;
             // 
             // EntitiesTitle
@@ -223,19 +226,29 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(197, 319);
+            this.treeView1.Size = new System.Drawing.Size(220, 319);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // WarpToSelected
+            // SetCamFocusBtn
             // 
-            this.WarpToSelected.Location = new System.Drawing.Point(18, 104);
-            this.WarpToSelected.Name = "WarpToSelected";
-            this.WarpToSelected.Size = new System.Drawing.Size(75, 23);
-            this.WarpToSelected.TabIndex = 7;
-            this.WarpToSelected.Text = "Warp To";
-            this.WarpToSelected.UseVisualStyleBackColor = true;
-            this.WarpToSelected.Click += new System.EventHandler(this.WarpToSelected_Click);
+            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 147);
+            this.SetCamFocusBtn.Name = "SetCamFocusBtn";
+            this.SetCamFocusBtn.Size = new System.Drawing.Size(75, 23);
+            this.SetCamFocusBtn.TabIndex = 8;
+            this.SetCamFocusBtn.Text = "Cam Focus";
+            this.SetCamFocusBtn.UseVisualStyleBackColor = true;
+            this.SetCamFocusBtn.Click += new System.EventHandler(this.SetCamFocusBtn_Click);
+            // 
+            // WarpToBtn
+            // 
+            this.WarpToBtn.Location = new System.Drawing.Point(18, 104);
+            this.WarpToBtn.Name = "WarpToBtn";
+            this.WarpToBtn.Size = new System.Drawing.Size(75, 23);
+            this.WarpToBtn.TabIndex = 7;
+            this.WarpToBtn.Text = "Warp To";
+            this.WarpToBtn.UseVisualStyleBackColor = true;
+            this.WarpToBtn.Click += new System.EventHandler(this.WarpToBtn_Click);
             // 
             // EntityIdLabel
             // 
@@ -252,7 +265,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(547, 364);
+            this.ClientSize = new System.Drawing.Size(389, 364);
             this.Controls.Add(this.FooterPanel);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -285,10 +298,11 @@
         private System.Windows.Forms.Button FkxRefreshBtn;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label EntityIdLabel;
-        private System.Windows.Forms.Button WarpToSelected;
+        private System.Windows.Forms.Button WarpToBtn;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label EntitiesTitle;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button SetCamFocusBtn;
     }
 }
 

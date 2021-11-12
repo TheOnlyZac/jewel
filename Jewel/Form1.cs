@@ -16,6 +16,7 @@ namespace Jewel
     {
         // initialize global vars
         private Entity jt, selectedEntity;
+        private Camera camera;
         private ArrayList fkxEntries = new ArrayList();
         private ArrayList allEntities = new ArrayList();
 
@@ -145,12 +146,11 @@ namespace Jewel
 
         private class FkxEntry
         {
+            private uint pointer;
             private static uint oPoolArray = 0x4;
             private static uint oPoolSize = 0x8;
             private static uint oEntityId = 0x10;
             private static uint oName = 0x20;
-
-            public uint pointer;
 
             // Constructor
             public FkxEntry(uint pFkxEntry)
@@ -176,6 +176,28 @@ namespace Jewel
             public string name
             {
                 get { return m.ReadString((pointer + oName).ToString("X")); }
+            }
+        }
+
+        private class Camera
+        {
+            private uint pointer;
+            private static uint oFocus = 0x318;
+
+            public Camera(uint pCamera)
+            {
+                this.pointer = Rebase(pCamera);
+            }
+
+            public uint getPointer() { return pointer;  }
+
+            public uint focus
+            {
+                get { return m.ReadUInt((pointer + oFocus).ToString("X")); }
+                set
+                {
+                    m.WriteMemory((pointer + oFocus).ToString("X"), "int", value.ToString());
+                }
             }
         }
 
@@ -281,11 +303,16 @@ namespace Jewel
         }
 
         // Handle warp to selected button click
-        private void WarpToSelected_Click(object sender, EventArgs e)
+        private void WarpToBtn_Click(object sender, EventArgs e)
         {
             jt.transform.relPosition.X = selectedEntity.transform.truePosition.X;
             jt.transform.relPosition.Y = selectedEntity.transform.truePosition.Y;
             jt.transform.relPosition.Z = selectedEntity.transform.truePosition.Z;
+        }
+
+        private void SetCamFocusBtn_Click(object sender, EventArgs e)
+        {
+            camera.focus = selectedEntity.getPointer();
         }
 
         // Background worker (trainer logic)
@@ -336,6 +363,13 @@ namespace Jewel
                 if (jt == null)
                 {
                     jt = new Entity(m.ReadUInt("202e1e40"));
+                }
+
+                if (camera == null)
+                {
+                    camera = new Camera(0x202ddf40);
+                    Console.WriteLine(camera.getPointer().ToString("X"));
+                    Console.WriteLine(camera.focus.ToString("X"));
                 }
 
                 // write selected entity position to ui
