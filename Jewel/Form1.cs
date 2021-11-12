@@ -12,7 +12,7 @@ using Memory;
 
 namespace Jewel
 {
-    public partial class Form1 : Form
+    public partial class TrainerMain : Form
     {
         // initialize global vars
         private Entity jt, selectedEntity;
@@ -20,7 +20,7 @@ namespace Jewel
         private ArrayList allEntities = new ArrayList();
 
         // Constructor
-        public Form1()
+        public TrainerMain()
         {
             InitializeComponent();
             this.Load += new System.EventHandler(this.Form1_Load);

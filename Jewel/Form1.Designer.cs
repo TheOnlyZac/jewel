@@ -1,6 +1,6 @@
 ﻿namespace Jewel
 {
-    partial class Form1
+    partial class TrainerMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrainerMain));
             this.ProcIdTitle = new System.Windows.Forms.Label();
             this.ProcIdLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -247,7 +247,7 @@
             this.EntityIdLabel.TabIndex = 6;
             this.EntityIdLabel.Text = "$entityId";
             // 
-            // Form1
+            // TrainerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,8 +255,9 @@
             this.ClientSize = new System.Drawing.Size(547, 364);
             this.Controls.Add(this.FooterPanel);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "TrainerMain";
+            this.Text = "Jewel";
             this.FooterPanel.ResumeLayout(false);
             this.FooterPanel.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
