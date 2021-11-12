@@ -101,13 +101,13 @@
             this.FooterPanel.Controls.Add(this.ProcIdTitle);
             this.FooterPanel.Location = new System.Drawing.Point(-3, 344);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(394, 20);
+            this.FooterPanel.Size = new System.Drawing.Size(539, 20);
             this.FooterPanel.TabIndex = 4;
             // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(229, 3);
+            this.progressBar1.Location = new System.Drawing.Point(374, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(160, 13);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -205,8 +205,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.XPosLabel);
             this.splitContainer1.Panel2.Controls.Add(this.YPosLabel);
             this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitContainer1.Size = new System.Drawing.Size(391, 345);
-            this.splitContainer1.SplitterDistance = 223;
+            this.splitContainer1.Size = new System.Drawing.Size(536, 345);
+            this.splitContainer1.SplitterDistance = 212;
             this.splitContainer1.TabIndex = 8;
             // 
             // EntitiesTitle
@@ -226,13 +226,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(220, 319);
+            this.treeView1.Size = new System.Drawing.Size(209, 319);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // SetCamFocusBtn
             // 
-            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 147);
+            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 133);
             this.SetCamFocusBtn.Name = "SetCamFocusBtn";
             this.SetCamFocusBtn.Size = new System.Drawing.Size(75, 23);
             this.SetCamFocusBtn.TabIndex = 8;
@@ -265,7 +265,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(389, 364);
+            this.ClientSize = new System.Drawing.Size(534, 364);
             this.Controls.Add(this.FooterPanel);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

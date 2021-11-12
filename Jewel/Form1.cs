@@ -17,8 +17,6 @@ namespace Jewel
         // initialize global vars
         private Entity jt, selectedEntity;
         private Camera camera;
-        private ArrayList fkxEntries = new ArrayList();
-        private ArrayList allEntities = new ArrayList();
 
         // Constructor
         public TrainerMain()
@@ -204,21 +202,22 @@ namespace Jewel
         // Populate fkxentries list with all FKX entries in ram
         public async void FindFkxEntries()
         {
+            ArrayList fkxEntries = new ArrayList();
+
             // start progress bar
             progressBar1.Invoke((MethodInvoker)delegate
             {
                 progressBar1.Maximum = 100;
                 progressBar1.Value = 10;
             });
-
-            fkxEntries.Clear();
+            
+            // Scan for "FK$X" string AOB
             IEnumerable<long> AoBScanResults = await m.AoBScan(0x20000000, 0x21ffffff, "46 4B 24 58", false, true, false);
-            int numResults = AoBScanResults.Count();
 
             // update progress bar
             progressBar1.Invoke((MethodInvoker)delegate
             {
-                progressBar1.Maximum = numResults+10;
+                progressBar1.Maximum = AoBScanResults.Count() + 10;
             });
 
             // Add each found FKX entry to the fkxentries list
@@ -228,40 +227,48 @@ namespace Jewel
                 fkxEntries.Add(fkx);
             }
 
-            // Set wait cursor and pause treeView update
-            Cursor.Current = Cursors.WaitCursor;
+            // Prepare tree view for update and clear it
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
 
+            // Populate tree view with nodes
             foreach(FkxEntry fkx in fkxEntries)
             {
-                Console.WriteLine(String.Format("On {0}", fkx.name));
+                if (fkx.name == "jt")
+                {
+                    Console.WriteLine(String.Format("On {0}", fkx.name));
+                    Console.WriteLine(fkx.poolSize);
+                    Console.WriteLine(fkx.poolArray.ToString("X"));
+                }
 
                 // Create node with FKX entry attached
                 TreeNode fkxNode = new TreeNode(fkx.name);
                 fkxNode.Tag = fkx;
 
-                // Add node to tree
+                // Add Fkx node to tree
                 treeView1.Nodes.Add(fkxNode);
 
-                // If this entity is fishy, don't populate it's entity nodes
+                // If this Fkx has none or too many entities, skip populating it's entity nodes
                 if (fkx.poolArray == 0x0 || fkx.poolSize > 127)
                 {
-                    Console.WriteLine(String.Format("Skipping {0}", fkx.name));
                     continue;
                 }
-                // Add Entity nodes as subnodes to FKX entries
+
+                // Add Entity nodes as subnodes to Fkx node
                 for(uint i = 0; i < fkx.poolSize; i++)
                 {
                     // Create entity node
                     uint entityPtr = m.ReadUInt(Rebase(fkx.poolArray + (0x4 * i)).ToString("X"));
                     TreeNode entityNode = new TreeNode(entityPtr.ToString("X"));
+                    Console.WriteLine(entityNode);
 
                     // Attach entity to node
                     entityNode.Tag = new Entity(entityPtr);
 
                     // Add node to tree
-                    treeView1.Nodes[fkxEntries.IndexOf(fkx)].Nodes.Add(entityNode);
+                    var parent = treeView1.Nodes.OfType<TreeNode>()
+                            .FirstOrDefault(node => node.Tag.Equals(fkx));
+                    parent.Nodes.Add(entityNode);
                 }
 
                 // Update progress bar
@@ -271,9 +278,8 @@ namespace Jewel
                 });
             }
 
-            // Reset cursor and re-enable treeView update
+            // Sort tree view and re-enable update
             treeView1.Sort();
-            Cursor.Current = Cursors.Default;
             treeView1.EndUpdate();
 
             // Reset progress bar
