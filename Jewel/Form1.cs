@@ -224,7 +224,7 @@ namespace Jewel
             private uint pointer;
             private static uint oFadeDistance = 0x1c; // float
             private static uint oFov = 0x24; // float
-            private static uint oFollowDistance = 0x13c; // float
+            private static uint oZoom = 0x4c; // float
             private static uint oResetFlag = 0x300; // uint
             private static uint oFocus = 0x318; // Entity*
 
@@ -261,6 +261,18 @@ namespace Jewel
                 set
                 {
                     m.WriteMemory((pointer + oFov).ToString("X"), "float", value.ToString());
+                }
+            }
+
+            public float zoom
+            {
+                get
+                {
+                    return m.ReadFloat((pointer + oZoom).ToString("X"));
+                }
+                set
+                {
+                    m.WriteMemory((pointer + oZoom).ToString("X"), "float", value.ToString());
                 }
             }
 
@@ -430,6 +442,12 @@ namespace Jewel
             camera.fov = (float)camFovValue.Value;
         }
 
+        // Handle follow distance change
+        private void camZoomValue_ValueChanged(object sender, EventArgs e)
+        {
+            camera.zoom = (float)camZoomValue.Value;
+        }
+
 
         /* Background worker (trainer logic) */
 
@@ -499,6 +517,11 @@ namespace Jewel
                     camFovValue.Invoke((MethodInvoker)delegate
                     {
                         camFovValue.Value = (decimal)camera.fov;
+                    });
+                    // Update follow distance value
+                    camZoomValue.Invoke((MethodInvoker)delegate
+                    {
+                        camZoomValue.Value = (decimal)camera.zoom;
                     });
                 }
 
