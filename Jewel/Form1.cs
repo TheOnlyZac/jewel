@@ -14,17 +14,18 @@ namespace Jewel
 {
     public partial class TrainerMain : Form
     {
-        // initialize global vars
+        // Init global vars
         private Entity jt, selectedEntity;
         private Camera camera;
 
-        // Constructor
+        // Form constructor
         public TrainerMain()
         {
             InitializeComponent();
             this.Load += new System.EventHandler(this.Form1_Load);
         }
         
+        // Init memory.dll
         public static Mem m = new Mem();
 
         private static uint Rebase(uint adr)
@@ -52,7 +53,9 @@ namespace Jewel
             Application.Exit();
         }
 
-        // Define game classes
+        
+        /* Game Classes */
+
         private class Entity
         {
             private uint pointer;
@@ -68,22 +71,28 @@ namespace Jewel
                 this.transform = new Transform(m.ReadUInt((pointer + oTransform).ToString("X")));
             }
 
-            public uint getPointer() { return pointer; }
+            public uint getPointer()
+            {
+                return pointer;
+            }
 
             public uint id
             {
-                get { return m.ReadUInt(Rebase(pointer + oId).ToString("X")); }
+                get
+                {
+                    return m.ReadUInt(Rebase(pointer + oId).ToString("X"));
+                }
             }
         }
 
         private class Transform
         {
             private uint pointer;
-            private static uint oScaleX = 0x0;
-            private static uint oScaleY = 0x4;
-            private static uint oScaleZ = 0x8;
-            private static uint oRelPosition = 0x30;
-            private static uint oTruePosition = 0x70;
+            private static uint oScaleX = 0x0; // Vector
+            private static uint oScaleY = 0x4; // Vector
+            private static uint oScaleZ = 0x8; // Vector
+            private static uint oRelPosition = 0x30; // Vector
+            private static uint oTruePosition = 0x70; // Vector
 
             public Vector scaleX;
             public Vector scaleY;
@@ -102,15 +111,18 @@ namespace Jewel
                 this.truePosition = new Vector((pointer + oTruePosition));
             }
 
-            public uint getPointer() { return pointer; }
+            public uint getPointer()
+            {
+                return pointer;
+            }
         }
 
         private class Vector
         {
             private uint pointer;
-            private static uint oX = 0x0;
-            private static uint oY = 0x4;
-            private static uint oZ = 0x8;
+            private static uint oX = 0x0; // float
+            private static uint oY = 0x4; // float
+            private static uint oZ = 0x8; // float
             
             // Constructor
             public Vector(uint pVector)
@@ -122,18 +134,36 @@ namespace Jewel
 
             public float X
             {
-                get { return m.ReadFloat((pointer + oX).ToString("X")); }
-                set { m.WriteMemory((pointer + oX).ToString("X"), "float", value.ToString()); }
+                get
+                {
+                    return m.ReadFloat((pointer + oX).ToString("X"));
+                }
+                set
+                {
+                    m.WriteMemory((pointer + oX).ToString("X"), "float", value.ToString());
+                }
             }
             public float Y
             {
-                get { return m.ReadFloat((pointer + oY).ToString("X")); }
-                set { m.WriteMemory((pointer + oY).ToString("X"), "float", value.ToString()); }
+                get
+                {
+                    return m.ReadFloat((pointer + oY).ToString("X"));
+                }
+                set
+                {
+                    m.WriteMemory((pointer + oY).ToString("X"), "float", value.ToString());
+                }
             }
             public float Z
             {
-                get { return m.ReadFloat((pointer + oZ).ToString("X")); }
-                set { m.WriteMemory((pointer + oZ).ToString("X"), "float", value.ToString()); }
+                get
+                {
+                    return m.ReadFloat((pointer + oZ).ToString("X"));
+                }
+                set
+                {
+                    m.WriteMemory((pointer + oZ).ToString("X"), "float", value.ToString());
+                }
             }
             
             public override string ToString()
@@ -145,10 +175,10 @@ namespace Jewel
         private class FkxEntry
         {
             private uint pointer;
-            private static uint oPoolArray = 0x4;
-            private static uint oPoolSize = 0x8;
-            private static uint oEntityId = 0x10;
-            private static uint oName = 0x20;
+            private static uint oPoolArray = 0x4; // Entity**
+            private static uint oPoolSize = 0x8; // uint
+            private static uint oEntityId = 0x10; // uint
+            private static uint oName = 0x20; // string
 
             // Constructor
             public FkxEntry(uint pFkxEntry)
@@ -158,46 +188,104 @@ namespace Jewel
 
             public uint poolArray
             {
-                get { return m.ReadUInt((pointer + oPoolArray).ToString("X")); }
+                get
+                {
+                    return m.ReadUInt((pointer + oPoolArray).ToString("X"));
+                }
             }
 
             public uint poolSize
             {
-                get { return m.ReadUInt((pointer + oPoolSize).ToString("X")); }
+                get
+                {
+                    return m.ReadUInt((pointer + oPoolSize).ToString("X"));
+                }
             }
 
             public uint entityId
             {
-                get { return m.ReadUInt((pointer + oEntityId).ToString("X")); }
+                get
+                {
+                    return m.ReadUInt((pointer + oEntityId).ToString("X"));
+                }
             }
 
             public string name
             {
-                get { return m.ReadString((pointer + oName).ToString("X")); }
+                get
+                {
+                    return m.ReadString((pointer + oName).ToString("X"));
+                }
             }
         }
 
         private class Camera
         {
             private uint pointer;
-            private static uint oFocus = 0x318;
+            private static uint oRenderDistance = 0x1c; // float
+            private static uint oFov = 0x24; // float
+            private static uint oFollowDistance = 0x13c; // float
+            private static uint oResetFlag = 0x300; // uint
+            private static uint oFocus = 0x318; // Entity*
 
+            // Constructor
             public Camera(uint pCamera)
             {
                 this.pointer = Rebase(pCamera);
             }
 
-            public uint getPointer() { return pointer;  }
+            // Getters/Setters
+            public uint getPointer()
+            {
+                return pointer;
+            }
+
+            public float renderDistance
+            {
+                get
+                {
+                    return m.ReadFloat((pointer + oRenderDistance).ToString("X"));
+                }
+                set
+                {
+                    m.WriteMemory((pointer + oRenderDistance).ToString("X"), "float", value.ToString());
+                }
+            }
+            
+            public float fov
+            {
+                get
+                {
+                    return m.ReadFloat((pointer + oFov).ToString("X"));
+                }
+                set
+                {
+                    m.WriteMemory((pointer + oFov).ToString("X"), "float", value.ToString());
+                }
+            }
 
             public uint focus
             {
-                get { return m.ReadUInt((pointer + oFocus).ToString("X")); }
+                get
+                {
+                    return m.ReadUInt((pointer + oFocus).ToString("X"));
+                }
                 set
                 {
                     m.WriteMemory((pointer + oFocus).ToString("X"), "int", value.ToString());
                 }
             }
+
+            // Resets the camera
+            public void Reset()
+            {
+                Console.WriteLine((pointer + oResetFlag).ToString("X"));
+                m.WriteMemory((pointer + oResetFlag).ToString("X"), "int", "1");
+            }
         }
+
+
+        /* Entities Tab */
 
         // Populate fkxentries list with all FKX entries in ram
         public async void FindFkxEntries()
@@ -248,6 +336,12 @@ namespace Jewel
                 // Add Fkx node to tree
                 treeView1.Nodes.Add(fkxNode);
 
+                // Update progress bar
+                progressBar1.Invoke((MethodInvoker)delegate
+                {
+                    progressBar1.Value += 1;
+                });
+
                 // If this Fkx has none or too many entities, skip populating it's entity nodes
                 if (fkx.poolArray == 0x0 || fkx.poolSize > 127)
                 {
@@ -270,12 +364,6 @@ namespace Jewel
                             .FirstOrDefault(node => node.Tag.Equals(fkx));
                     parent.Nodes.Add(entityNode);
                 }
-
-                // Update progress bar
-                progressBar1.Invoke((MethodInvoker)delegate
-                {
-                    progressBar1.Value += 1;
-                });
             }
 
             // Sort tree view and re-enable update
@@ -321,7 +409,30 @@ namespace Jewel
             camera.focus = selectedEntity.getPointer();
         }
 
-        // Background worker (trainer logic)
+
+        /* Camera Tab */
+
+        // Handle refresh camera button clicked
+        private void resetCamBtn_Click(object sender, EventArgs e)
+        {
+            camera.Reset();
+        }
+
+        // Handle render distance change
+        private void camRenderDistanceValue_ValueChanged(object sender, EventArgs e)
+        {
+            camera.renderDistance = (float)camRenderDistanceValue.Value;
+        }
+
+        // Handle FOV change
+        private void camFovValue_ValueChanged(object sender, EventArgs e)
+        {
+            camera.fov = (float)camFovValue.Value;
+        }
+
+
+        /* Background worker (trainer logic) */
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             int pID;
@@ -366,16 +477,29 @@ namespace Jewel
                 }
 
                 // process is open, so let's do this
+                
                 if (jt == null)
                 {
                     jt = new Entity(m.ReadUInt("202e1e40"));
                 }
 
+                // Read camera values
                 if (camera == null)
                 {
                     camera = new Camera(0x202ddf40);
-                    Console.WriteLine(camera.getPointer().ToString("X"));
-                    Console.WriteLine(camera.focus.ToString("X"));
+                }
+                else
+                {
+                    // Update render distance value
+                    camRenderDistanceValue.Invoke((MethodInvoker)delegate
+                    {
+                        camRenderDistanceValue.Value = (decimal)camera.renderDistance;
+                    });
+                    // Update fov value
+                    camFovValue.Invoke((MethodInvoker)delegate
+                    {
+                        camFovValue.Value = (decimal)camera.fov;
+                    });
                 }
 
                 // write selected entity position to ui
@@ -387,17 +511,17 @@ namespace Jewel
                     });
                     if (selectedEntity.transform != null)
                     {
-                        XPosLabel.Invoke((MethodInvoker)delegate
+                        xPosTextBox.Invoke((MethodInvoker)delegate
                         {
-                            XPosLabel.Text = selectedEntity.transform.truePosition.X.ToString();
+                            xPosTextBox.Text = selectedEntity.transform.truePosition.X.ToString();
                         });
-                        YPosLabel.Invoke((MethodInvoker)delegate
+                        yPosTextBox.Invoke((MethodInvoker)delegate
                         {
-                            YPosLabel.Text = selectedEntity.transform.truePosition.Y.ToString();
+                            yPosTextBox.Text = selectedEntity.transform.truePosition.Y.ToString();
                         });
-                        ZPosLabel.Invoke((MethodInvoker)delegate
+                        zPosTextBox.Invoke((MethodInvoker)delegate
                         {
-                            ZPosLabel.Text = selectedEntity.transform.truePosition.Z.ToString();
+                            zPosTextBox.Text = selectedEntity.transform.truePosition.Z.ToString();
                         });
                     }
                 }

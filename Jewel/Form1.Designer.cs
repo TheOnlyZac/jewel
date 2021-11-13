@@ -35,23 +35,37 @@
             this.XPosTitle = new System.Windows.Forms.Label();
             this.FooterPanel = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.XPosLabel = new System.Windows.Forms.Label();
             this.YPosTitle = new System.Windows.Forms.Label();
-            this.YPosLabel = new System.Windows.Forms.Label();
             this.ZPosTitle = new System.Windows.Forms.Label();
-            this.ZPosLabel = new System.Windows.Forms.Label();
             this.FkxRefreshBtn = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.entitiesSplitContainer = new System.Windows.Forms.SplitContainer();
             this.EntitiesTitle = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.zPosTextBox = new System.Windows.Forms.TextBox();
+            this.yPosTextBox = new System.Windows.Forms.TextBox();
+            this.xPosTextBox = new System.Windows.Forms.TextBox();
             this.SetCamFocusBtn = new System.Windows.Forms.Button();
             this.WarpToBtn = new System.Windows.Forms.Button();
             this.EntityIdLabel = new System.Windows.Forms.Label();
+            this.trainerTabs = new System.Windows.Forms.TabControl();
+            this.entitiesTab = new System.Windows.Forms.TabPage();
+            this.cameraTab = new System.Windows.Forms.TabPage();
+            this.camRenderDistanceLabel = new System.Windows.Forms.Label();
+            this.camFovLabel = new System.Windows.Forms.Label();
+            this.cameraTabTitle = new System.Windows.Forms.Label();
+            this.camRenderDistanceValue = new System.Windows.Forms.NumericUpDown();
+            this.camFovValue = new System.Windows.Forms.NumericUpDown();
+            this.resetCamBtn = new System.Windows.Forms.Button();
             this.FooterPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).BeginInit();
+            this.entitiesSplitContainer.Panel1.SuspendLayout();
+            this.entitiesSplitContainer.Panel2.SuspendLayout();
+            this.entitiesSplitContainer.SuspendLayout();
+            this.trainerTabs.SuspendLayout();
+            this.entitiesTab.SuspendLayout();
+            this.cameraTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.camRenderDistanceValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).BeginInit();
             this.SuspendLayout();
             // 
             // ProcIdTitle
@@ -83,10 +97,10 @@
             // XPosTitle
             // 
             this.XPosTitle.AutoSize = true;
-            this.XPosTitle.Font = new System.Drawing.Font("Arial", 10F);
-            this.XPosTitle.Location = new System.Drawing.Point(20, 53);
+            this.XPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XPosTitle.Location = new System.Drawing.Point(18, 57);
             this.XPosTitle.Name = "XPosTitle";
-            this.XPosTitle.Size = new System.Drawing.Size(16, 16);
+            this.XPosTitle.Size = new System.Drawing.Size(17, 16);
             this.XPosTitle.TabIndex = 3;
             this.XPosTitle.Text = "X";
             // 
@@ -113,55 +127,25 @@
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 8;
             // 
-            // XPosLabel
-            // 
-            this.XPosLabel.AutoSize = true;
-            this.XPosLabel.Font = new System.Drawing.Font("Arial", 10F);
-            this.XPosLabel.Location = new System.Drawing.Point(42, 53);
-            this.XPosLabel.Name = "XPosLabel";
-            this.XPosLabel.Size = new System.Drawing.Size(46, 16);
-            this.XPosLabel.TabIndex = 5;
-            this.XPosLabel.Text = "$xPos";
-            // 
             // YPosTitle
             // 
             this.YPosTitle.AutoSize = true;
-            this.YPosTitle.Font = new System.Drawing.Font("Arial", 10F);
-            this.YPosTitle.Location = new System.Drawing.Point(20, 69);
+            this.YPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YPosTitle.Location = new System.Drawing.Point(18, 83);
             this.YPosTitle.Name = "YPosTitle";
-            this.YPosTitle.Size = new System.Drawing.Size(17, 16);
+            this.YPosTitle.Size = new System.Drawing.Size(16, 16);
             this.YPosTitle.TabIndex = 3;
             this.YPosTitle.Text = "Y";
-            // 
-            // YPosLabel
-            // 
-            this.YPosLabel.AutoSize = true;
-            this.YPosLabel.Font = new System.Drawing.Font("Arial", 10F);
-            this.YPosLabel.Location = new System.Drawing.Point(42, 69);
-            this.YPosLabel.Name = "YPosLabel";
-            this.YPosLabel.Size = new System.Drawing.Size(47, 16);
-            this.YPosLabel.TabIndex = 5;
-            this.YPosLabel.Text = "$yPos";
             // 
             // ZPosTitle
             // 
             this.ZPosTitle.AutoSize = true;
-            this.ZPosTitle.Font = new System.Drawing.Font("Arial", 10F);
-            this.ZPosTitle.Location = new System.Drawing.Point(20, 85);
+            this.ZPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ZPosTitle.Location = new System.Drawing.Point(19, 109);
             this.ZPosTitle.Name = "ZPosTitle";
-            this.ZPosTitle.Size = new System.Drawing.Size(16, 16);
+            this.ZPosTitle.Size = new System.Drawing.Size(15, 16);
             this.ZPosTitle.TabIndex = 3;
             this.ZPosTitle.Text = "Z";
-            // 
-            // ZPosLabel
-            // 
-            this.ZPosLabel.AutoSize = true;
-            this.ZPosLabel.Font = new System.Drawing.Font("Arial", 10F);
-            this.ZPosLabel.Location = new System.Drawing.Point(42, 85);
-            this.ZPosLabel.Name = "ZPosLabel";
-            this.ZPosLabel.Size = new System.Drawing.Size(46, 16);
-            this.ZPosLabel.TabIndex = 5;
-            this.ZPosLabel.Text = "$zPos";
             // 
             // FkxRefreshBtn
             // 
@@ -176,46 +160,46 @@
             this.FkxRefreshBtn.UseVisualStyleBackColor = true;
             this.FkxRefreshBtn.Click += new System.EventHandler(this.FkxRefreshBtn_Click);
             // 
-            // splitContainer1
+            // entitiesSplitContainer
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.entitiesSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.entitiesSplitContainer.BackColor = System.Drawing.Color.Transparent;
+            this.entitiesSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.entitiesSplitContainer.Name = "entitiesSplitContainer";
             // 
-            // splitContainer1.Panel1
+            // entitiesSplitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel1.Controls.Add(this.EntitiesTitle);
-            this.splitContainer1.Panel1.Controls.Add(this.FkxRefreshBtn);
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            this.entitiesSplitContainer.Panel1.BackColor = System.Drawing.Color.White;
+            this.entitiesSplitContainer.Panel1.Controls.Add(this.EntitiesTitle);
+            this.entitiesSplitContainer.Panel1.Controls.Add(this.FkxRefreshBtn);
+            this.entitiesSplitContainer.Panel1.Controls.Add(this.treeView1);
             // 
-            // splitContainer1.Panel2
+            // entitiesSplitContainer.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.Controls.Add(this.SetCamFocusBtn);
-            this.splitContainer1.Panel2.Controls.Add(this.WarpToBtn);
-            this.splitContainer1.Panel2.Controls.Add(this.EntityIdLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.YPosTitle);
-            this.splitContainer1.Panel2.Controls.Add(this.ZPosLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.XPosTitle);
-            this.splitContainer1.Panel2.Controls.Add(this.ZPosTitle);
-            this.splitContainer1.Panel2.Controls.Add(this.XPosLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.YPosLabel);
-            this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitContainer1.Size = new System.Drawing.Size(536, 345);
-            this.splitContainer1.SplitterDistance = 212;
-            this.splitContainer1.TabIndex = 8;
+            this.entitiesSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.zPosTextBox);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.yPosTextBox);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.xPosTextBox);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.SetCamFocusBtn);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.WarpToBtn);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.EntityIdLabel);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.YPosTitle);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.XPosTitle);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.ZPosTitle);
+            this.entitiesSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.entitiesSplitContainer.Size = new System.Drawing.Size(531, 316);
+            this.entitiesSplitContainer.SplitterDistance = 204;
+            this.entitiesSplitContainer.TabIndex = 8;
             // 
             // EntitiesTitle
             // 
             this.EntitiesTitle.AutoSize = true;
-            this.EntitiesTitle.Font = new System.Drawing.Font("Arial", 12F);
-            this.EntitiesTitle.Location = new System.Drawing.Point(26, 4);
+            this.EntitiesTitle.Font = new System.Drawing.Font("Arial", 11F);
+            this.EntitiesTitle.Location = new System.Drawing.Point(26, 5);
             this.EntitiesTitle.Name = "EntitiesTitle";
-            this.EntitiesTitle.Size = new System.Drawing.Size(118, 18);
+            this.EntitiesTitle.Size = new System.Drawing.Size(108, 17);
             this.EntitiesTitle.TabIndex = 9;
             this.EntitiesTitle.Text = "Loaded Entities";
             // 
@@ -226,15 +210,36 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(209, 319);
+            this.treeView1.Size = new System.Drawing.Size(201, 290);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
+            // zPosTextBox
+            // 
+            this.zPosTextBox.Location = new System.Drawing.Point(38, 106);
+            this.zPosTextBox.Name = "zPosTextBox";
+            this.zPosTextBox.Size = new System.Drawing.Size(100, 21);
+            this.zPosTextBox.TabIndex = 9;
+            // 
+            // yPosTextBox
+            // 
+            this.yPosTextBox.Location = new System.Drawing.Point(38, 80);
+            this.yPosTextBox.Name = "yPosTextBox";
+            this.yPosTextBox.Size = new System.Drawing.Size(100, 21);
+            this.yPosTextBox.TabIndex = 9;
+            // 
+            // xPosTextBox
+            // 
+            this.xPosTextBox.Location = new System.Drawing.Point(38, 54);
+            this.xPosTextBox.Name = "xPosTextBox";
+            this.xPosTextBox.Size = new System.Drawing.Size(100, 21);
+            this.xPosTextBox.TabIndex = 9;
+            // 
             // SetCamFocusBtn
             // 
-            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 133);
+            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 171);
             this.SetCamFocusBtn.Name = "SetCamFocusBtn";
-            this.SetCamFocusBtn.Size = new System.Drawing.Size(75, 23);
+            this.SetCamFocusBtn.Size = new System.Drawing.Size(84, 23);
             this.SetCamFocusBtn.TabIndex = 8;
             this.SetCamFocusBtn.Text = "Cam Focus";
             this.SetCamFocusBtn.UseVisualStyleBackColor = true;
@@ -242,9 +247,9 @@
             // 
             // WarpToBtn
             // 
-            this.WarpToBtn.Location = new System.Drawing.Point(18, 104);
+            this.WarpToBtn.Location = new System.Drawing.Point(18, 142);
             this.WarpToBtn.Name = "WarpToBtn";
-            this.WarpToBtn.Size = new System.Drawing.Size(75, 23);
+            this.WarpToBtn.Size = new System.Drawing.Size(84, 23);
             this.WarpToBtn.TabIndex = 7;
             this.WarpToBtn.Text = "Warp To";
             this.WarpToBtn.UseVisualStyleBackColor = true;
@@ -253,12 +258,135 @@
             // EntityIdLabel
             // 
             this.EntityIdLabel.AutoSize = true;
-            this.EntityIdLabel.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.EntityIdLabel.Location = new System.Drawing.Point(14, 15);
+            this.EntityIdLabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EntityIdLabel.Location = new System.Drawing.Point(14, 16);
             this.EntityIdLabel.Name = "EntityIdLabel";
-            this.EntityIdLabel.Size = new System.Drawing.Size(85, 23);
+            this.EntityIdLabel.Size = new System.Drawing.Size(165, 22);
             this.EntityIdLabel.TabIndex = 6;
-            this.EntityIdLabel.Text = "$entityId";
+            this.EntityIdLabel.Text = "Select an entity...";
+            // 
+            // trainerTabs
+            // 
+            this.trainerTabs.Controls.Add(this.entitiesTab);
+            this.trainerTabs.Controls.Add(this.cameraTab);
+            this.trainerTabs.Font = new System.Drawing.Font("Arial", 9F);
+            this.trainerTabs.Location = new System.Drawing.Point(-3, 0);
+            this.trainerTabs.Name = "trainerTabs";
+            this.trainerTabs.SelectedIndex = 0;
+            this.trainerTabs.Size = new System.Drawing.Size(539, 344);
+            this.trainerTabs.TabIndex = 10;
+            // 
+            // entitiesTab
+            // 
+            this.entitiesTab.BackColor = System.Drawing.SystemColors.Control;
+            this.entitiesTab.Controls.Add(this.entitiesSplitContainer);
+            this.entitiesTab.Location = new System.Drawing.Point(4, 24);
+            this.entitiesTab.Name = "entitiesTab";
+            this.entitiesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.entitiesTab.Size = new System.Drawing.Size(531, 316);
+            this.entitiesTab.TabIndex = 0;
+            this.entitiesTab.Text = "Entities";
+            // 
+            // cameraTab
+            // 
+            this.cameraTab.Controls.Add(this.camRenderDistanceLabel);
+            this.cameraTab.Controls.Add(this.camFovLabel);
+            this.cameraTab.Controls.Add(this.cameraTabTitle);
+            this.cameraTab.Controls.Add(this.camRenderDistanceValue);
+            this.cameraTab.Controls.Add(this.camFovValue);
+            this.cameraTab.Controls.Add(this.resetCamBtn);
+            this.cameraTab.Location = new System.Drawing.Point(4, 24);
+            this.cameraTab.Name = "cameraTab";
+            this.cameraTab.Padding = new System.Windows.Forms.Padding(3);
+            this.cameraTab.Size = new System.Drawing.Size(531, 316);
+            this.cameraTab.TabIndex = 1;
+            this.cameraTab.Text = "Camera";
+            this.cameraTab.UseVisualStyleBackColor = true;
+            // 
+            // camRenderDistanceLabel
+            // 
+            this.camRenderDistanceLabel.AutoSize = true;
+            this.camRenderDistanceLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.camRenderDistanceLabel.Location = new System.Drawing.Point(16, 86);
+            this.camRenderDistanceLabel.Name = "camRenderDistanceLabel";
+            this.camRenderDistanceLabel.Size = new System.Drawing.Size(112, 16);
+            this.camRenderDistanceLabel.TabIndex = 11;
+            this.camRenderDistanceLabel.Text = "Render Distance";
+            this.camRenderDistanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // camFovLabel
+            // 
+            this.camFovLabel.AutoSize = true;
+            this.camFovLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.camFovLabel.Location = new System.Drawing.Point(16, 146);
+            this.camFovLabel.Name = "camFovLabel";
+            this.camFovLabel.Size = new System.Drawing.Size(35, 16);
+            this.camFovLabel.TabIndex = 11;
+            this.camFovLabel.Text = "FOV";
+            this.camFovLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cameraTabTitle
+            // 
+            this.cameraTabTitle.AutoSize = true;
+            this.cameraTabTitle.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cameraTabTitle.Location = new System.Drawing.Point(13, 16);
+            this.cameraTabTitle.Name = "cameraTabTitle";
+            this.cameraTabTitle.Size = new System.Drawing.Size(160, 22);
+            this.cameraTabTitle.TabIndex = 7;
+            this.cameraTabTitle.Text = "Camera Options";
+            // 
+            // camRenderDistanceValue
+            // 
+            this.camRenderDistanceValue.DecimalPlaces = 2;
+            this.camRenderDistanceValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.camRenderDistanceValue.Location = new System.Drawing.Point(19, 105);
+            this.camRenderDistanceValue.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.camRenderDistanceValue.Name = "camRenderDistanceValue";
+            this.camRenderDistanceValue.Size = new System.Drawing.Size(89, 21);
+            this.camRenderDistanceValue.TabIndex = 1;
+            this.camRenderDistanceValue.ValueChanged += new System.EventHandler(this.camRenderDistanceValue_ValueChanged);
+            // 
+            // camFovValue
+            // 
+            this.camFovValue.DecimalPlaces = 2;
+            this.camFovValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.camFovValue.Location = new System.Drawing.Point(19, 165);
+            this.camFovValue.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.camFovValue.Minimum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            -2147483648});
+            this.camFovValue.Name = "camFovValue";
+            this.camFovValue.Size = new System.Drawing.Size(89, 21);
+            this.camFovValue.TabIndex = 1;
+            this.camFovValue.ValueChanged += new System.EventHandler(this.camFovValue_ValueChanged);
+            // 
+            // resetCamBtn
+            // 
+            this.resetCamBtn.Location = new System.Drawing.Point(17, 41);
+            this.resetCamBtn.Name = "resetCamBtn";
+            this.resetCamBtn.Size = new System.Drawing.Size(120, 23);
+            this.resetCamBtn.TabIndex = 0;
+            this.resetCamBtn.Text = "Refresh Camera";
+            this.resetCamBtn.UseVisualStyleBackColor = true;
+            this.resetCamBtn.Click += new System.EventHandler(this.resetCamBtn_Click);
             // 
             // TrainerMain
             // 
@@ -266,19 +394,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(534, 364);
+            this.Controls.Add(this.trainerTabs);
             this.Controls.Add(this.FooterPanel);
-            this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrainerMain";
             this.Text = "Jewel";
             this.FooterPanel.ResumeLayout(false);
             this.FooterPanel.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.entitiesSplitContainer.Panel1.ResumeLayout(false);
+            this.entitiesSplitContainer.Panel1.PerformLayout();
+            this.entitiesSplitContainer.Panel2.ResumeLayout(false);
+            this.entitiesSplitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).EndInit();
+            this.entitiesSplitContainer.ResumeLayout(false);
+            this.trainerTabs.ResumeLayout(false);
+            this.entitiesTab.ResumeLayout(false);
+            this.cameraTab.ResumeLayout(false);
+            this.cameraTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.camRenderDistanceValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,19 +424,28 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label XPosTitle;
         private System.Windows.Forms.Panel FooterPanel;
-        private System.Windows.Forms.Label XPosLabel;
         private System.Windows.Forms.Label YPosTitle;
-        private System.Windows.Forms.Label YPosLabel;
         private System.Windows.Forms.Label ZPosTitle;
-        private System.Windows.Forms.Label ZPosLabel;
         private System.Windows.Forms.Button FkxRefreshBtn;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer entitiesSplitContainer;
         private System.Windows.Forms.Label EntityIdLabel;
         private System.Windows.Forms.Button WarpToBtn;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label EntitiesTitle;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button SetCamFocusBtn;
+        private System.Windows.Forms.TabControl trainerTabs;
+        private System.Windows.Forms.TabPage entitiesTab;
+        private System.Windows.Forms.TabPage cameraTab;
+        private System.Windows.Forms.TextBox xPosTextBox;
+        private System.Windows.Forms.TextBox zPosTextBox;
+        private System.Windows.Forms.TextBox yPosTextBox;
+        private System.Windows.Forms.Label camFovLabel;
+        private System.Windows.Forms.Label cameraTabTitle;
+        private System.Windows.Forms.NumericUpDown camFovValue;
+        private System.Windows.Forms.Button resetCamBtn;
+        private System.Windows.Forms.Label camRenderDistanceLabel;
+        private System.Windows.Forms.NumericUpDown camRenderDistanceValue;
     }
 }
 
