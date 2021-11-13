@@ -222,7 +222,7 @@ namespace Jewel
         private class Camera
         {
             private uint pointer;
-            private static uint oRenderDistance = 0x1c; // float
+            private static uint oFadeDistance = 0x1c; // float
             private static uint oFov = 0x24; // float
             private static uint oFollowDistance = 0x13c; // float
             private static uint oResetFlag = 0x300; // uint
@@ -240,15 +240,15 @@ namespace Jewel
                 return pointer;
             }
 
-            public float renderDistance
+            public float fadeDistance
             {
                 get
                 {
-                    return m.ReadFloat((pointer + oRenderDistance).ToString("X"));
+                    return m.ReadFloat((pointer + oFadeDistance).ToString("X"));
                 }
                 set
                 {
-                    m.WriteMemory((pointer + oRenderDistance).ToString("X"), "float", value.ToString());
+                    m.WriteMemory((pointer + oFadeDistance).ToString("X"), "float", value.ToString());
                 }
             }
             
@@ -419,9 +419,9 @@ namespace Jewel
         }
 
         // Handle render distance change
-        private void camRenderDistanceValue_ValueChanged(object sender, EventArgs e)
+        private void camFadeDistanceValue_ValueChanged(object sender, EventArgs e)
         {
-            camera.renderDistance = (float)camRenderDistanceValue.Value;
+            camera.fadeDistance = (float)camFadeDistanceValue.Value;
         }
 
         // Handle FOV change
@@ -491,9 +491,9 @@ namespace Jewel
                 else
                 {
                     // Update render distance value
-                    camRenderDistanceValue.Invoke((MethodInvoker)delegate
+                    camFadeDistanceValue.Invoke((MethodInvoker)delegate
                     {
-                        camRenderDistanceValue.Value = (decimal)camera.renderDistance;
+                        camFadeDistanceValue.Value = (decimal)camera.fadeDistance;
                     });
                     // Update fov value
                     camFovValue.Invoke((MethodInvoker)delegate

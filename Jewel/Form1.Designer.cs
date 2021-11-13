@@ -50,10 +50,10 @@
             this.trainerTabs = new System.Windows.Forms.TabControl();
             this.entitiesTab = new System.Windows.Forms.TabPage();
             this.cameraTab = new System.Windows.Forms.TabPage();
-            this.camRenderDistanceLabel = new System.Windows.Forms.Label();
+            this.camFadeDistanceLabel = new System.Windows.Forms.Label();
             this.camFovLabel = new System.Windows.Forms.Label();
             this.cameraTabTitle = new System.Windows.Forms.Label();
-            this.camRenderDistanceValue = new System.Windows.Forms.NumericUpDown();
+            this.camFadeDistanceValue = new System.Windows.Forms.NumericUpDown();
             this.camFovValue = new System.Windows.Forms.NumericUpDown();
             this.resetCamBtn = new System.Windows.Forms.Button();
             this.FooterPanel.SuspendLayout();
@@ -64,7 +64,7 @@
             this.trainerTabs.SuspendLayout();
             this.entitiesTab.SuspendLayout();
             this.cameraTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.camRenderDistanceValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camFadeDistanceValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).BeginInit();
             this.SuspendLayout();
             // 
@@ -289,10 +289,10 @@
             // 
             // cameraTab
             // 
-            this.cameraTab.Controls.Add(this.camRenderDistanceLabel);
+            this.cameraTab.Controls.Add(this.camFadeDistanceLabel);
             this.cameraTab.Controls.Add(this.camFovLabel);
             this.cameraTab.Controls.Add(this.cameraTabTitle);
-            this.cameraTab.Controls.Add(this.camRenderDistanceValue);
+            this.cameraTab.Controls.Add(this.camFadeDistanceValue);
             this.cameraTab.Controls.Add(this.camFovValue);
             this.cameraTab.Controls.Add(this.resetCamBtn);
             this.cameraTab.Location = new System.Drawing.Point(4, 24);
@@ -303,16 +303,16 @@
             this.cameraTab.Text = "Camera";
             this.cameraTab.UseVisualStyleBackColor = true;
             // 
-            // camRenderDistanceLabel
+            // camFadeDistanceLabel
             // 
-            this.camRenderDistanceLabel.AutoSize = true;
-            this.camRenderDistanceLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.camRenderDistanceLabel.Location = new System.Drawing.Point(16, 86);
-            this.camRenderDistanceLabel.Name = "camRenderDistanceLabel";
-            this.camRenderDistanceLabel.Size = new System.Drawing.Size(112, 16);
-            this.camRenderDistanceLabel.TabIndex = 11;
-            this.camRenderDistanceLabel.Text = "Render Distance";
-            this.camRenderDistanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.camFadeDistanceLabel.AutoSize = true;
+            this.camFadeDistanceLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.camFadeDistanceLabel.Location = new System.Drawing.Point(16, 86);
+            this.camFadeDistanceLabel.Name = "camFadeDistanceLabel";
+            this.camFadeDistanceLabel.Size = new System.Drawing.Size(98, 16);
+            this.camFadeDistanceLabel.TabIndex = 11;
+            this.camFadeDistanceLabel.Text = "Fade Distance";
+            this.camFadeDistanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // camFovLabel
             // 
@@ -335,24 +335,29 @@
             this.cameraTabTitle.TabIndex = 7;
             this.cameraTabTitle.Text = "Camera Options";
             // 
-            // camRenderDistanceValue
+            // camFadeDistanceValue
             // 
-            this.camRenderDistanceValue.DecimalPlaces = 2;
-            this.camRenderDistanceValue.Increment = new decimal(new int[] {
+            this.camFadeDistanceValue.DecimalPlaces = 2;
+            this.camFadeDistanceValue.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.camRenderDistanceValue.Location = new System.Drawing.Point(19, 105);
-            this.camRenderDistanceValue.Maximum = new decimal(new int[] {
+            this.camFadeDistanceValue.Location = new System.Drawing.Point(19, 105);
+            this.camFadeDistanceValue.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.camRenderDistanceValue.Name = "camRenderDistanceValue";
-            this.camRenderDistanceValue.Size = new System.Drawing.Size(89, 21);
-            this.camRenderDistanceValue.TabIndex = 1;
-            this.camRenderDistanceValue.ValueChanged += new System.EventHandler(this.camRenderDistanceValue_ValueChanged);
+            this.camFadeDistanceValue.Minimum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            -2147483648});
+            this.camFadeDistanceValue.Name = "camFadeDistanceValue";
+            this.camFadeDistanceValue.Size = new System.Drawing.Size(89, 21);
+            this.camFadeDistanceValue.TabIndex = 1;
+            this.camFadeDistanceValue.ValueChanged += new System.EventHandler(this.camFadeDistanceValue_ValueChanged);
             // 
             // camFovValue
             // 
@@ -411,7 +416,7 @@
             this.entitiesTab.ResumeLayout(false);
             this.cameraTab.ResumeLayout(false);
             this.cameraTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.camRenderDistanceValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camFadeDistanceValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).EndInit();
             this.ResumeLayout(false);
 
@@ -444,8 +449,8 @@
         private System.Windows.Forms.Label cameraTabTitle;
         private System.Windows.Forms.NumericUpDown camFovValue;
         private System.Windows.Forms.Button resetCamBtn;
-        private System.Windows.Forms.Label camRenderDistanceLabel;
-        private System.Windows.Forms.NumericUpDown camRenderDistanceValue;
+        private System.Windows.Forms.Label camFadeDistanceLabel;
+        private System.Windows.Forms.NumericUpDown camFadeDistanceValue;
     }
 }
 
