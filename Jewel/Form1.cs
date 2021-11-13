@@ -411,6 +411,8 @@ namespace Jewel
         // Handle update entity position text box value
         private void positionTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (selectedEntity == null) return;
+
             TextBox textBox = sender as TextBox;
 
             string text = textBox.Text;
@@ -434,9 +436,45 @@ namespace Jewel
             }
         }
 
+        // Handle copy position values
+        private void copyPositionBtn_Click(object sender, EventArgs e)
+        {
+            // Generate value string from current entity position
+            string valueString = String.Format("{0},{1},{2}",
+                xPosTextBox.Text, yPosTextBox.Text, zPosTextBox.Text);
+
+            // Copy to clipboard
+            Clipboard.SetText(valueString);
+        }
+
+        // Handle paste position values
+        private void pastePositionBtn_Click(object sender, EventArgs e)
+        {
+            // Read value string from clipboard
+            string valueString = Clipboard.GetText();
+            string[] values = valueString.Split(',');
+
+            // Validate value string
+            if (values.Count() != 3) return;
+
+            float x, y, z;
+
+            if (float.TryParse(values[0], out x) &&
+                float.TryParse(values[1], out y) &&
+                float.TryParse(values[2], out z))
+            {
+                // Set entity position
+                (selectedEntity.transform.relPosition.X,
+                    selectedEntity.transform.relPosition.Y,
+                    selectedEntity.transform.relPosition.Z) = (x, y, z);
+            }
+        }
+
         // Handle warp to selected button click
         private void WarpToBtn_Click(object sender, EventArgs e)
         {
+            if (jt == null || selectedEntity == null) return;
+
             jt.transform.relPosition.X = selectedEntity.transform.truePosition.X;
             jt.transform.relPosition.Y = selectedEntity.transform.truePosition.Y;
             jt.transform.relPosition.Z = selectedEntity.transform.truePosition.Z;
@@ -444,6 +482,8 @@ namespace Jewel
 
         private void SetCamFocusBtn_Click(object sender, EventArgs e)
         {
+            if (camera == null || selectedEntity == null) return;
+
             camera.focus = selectedEntity.getPointer();
         }
 
@@ -454,6 +494,12 @@ namespace Jewel
         private void resetCamBtn_Click(object sender, EventArgs e)
         {
             camera.Reset();
+        }
+
+        // Handle Focus on Sly button clicked
+        private void camFocusOnJtBtn_Click(object sender, EventArgs e)
+        {
+            camera.focus = jt.getPointer();
         }
 
         // Handle render distance change
@@ -473,6 +519,7 @@ namespace Jewel
         {
             camera.zoom = (float)camZoomValue.Value;
         }
+
 
         /* Background worker (trainer logic) */
 

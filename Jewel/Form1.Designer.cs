@@ -42,6 +42,8 @@
             this.entitiesSplitContainer = new System.Windows.Forms.SplitContainer();
             this.EntitiesTitle = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.pastePositionBtn = new System.Windows.Forms.Button();
+            this.copyPositionBtn = new System.Windows.Forms.Button();
             this.entityPositionLabel = new System.Windows.Forms.Label();
             this.zPosTextBox = new System.Windows.Forms.TextBox();
             this.yPosTextBox = new System.Windows.Forms.TextBox();
@@ -61,6 +63,7 @@
             this.camFovValue = new System.Windows.Forms.NumericUpDown();
             this.resetCamBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.camFocusOnJtBtn = new System.Windows.Forms.Button();
             this.FooterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).BeginInit();
             this.entitiesSplitContainer.Panel1.SuspendLayout();
@@ -92,9 +95,9 @@
             this.ProcIdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
             this.ProcIdLabel.Location = new System.Drawing.Point(67, 2);
             this.ProcIdLabel.Name = "ProcIdLabel";
-            this.ProcIdLabel.Size = new System.Drawing.Size(44, 14);
+            this.ProcIdLabel.Size = new System.Drawing.Size(25, 14);
             this.ProcIdLabel.TabIndex = 1;
-            this.ProcIdLabel.Text = "$ProcID";
+            this.ProcIdLabel.Text = "N/A";
             // 
             // backgroundWorker1
             // 
@@ -119,15 +122,15 @@
             this.FooterPanel.Controls.Add(this.progressBar1);
             this.FooterPanel.Controls.Add(this.ProcIdLabel);
             this.FooterPanel.Controls.Add(this.ProcIdTitle);
-            this.FooterPanel.Location = new System.Drawing.Point(-3, 344);
+            this.FooterPanel.Location = new System.Drawing.Point(1, 341);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(539, 20);
+            this.FooterPanel.Size = new System.Drawing.Size(533, 20);
             this.FooterPanel.TabIndex = 4;
             // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(374, 3);
+            this.progressBar1.Location = new System.Drawing.Point(368, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(160, 13);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -137,7 +140,7 @@
             // 
             this.YPosTitle.AutoSize = true;
             this.YPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YPosTitle.Location = new System.Drawing.Point(18, 98);
+            this.YPosTitle.Location = new System.Drawing.Point(17, 98);
             this.YPosTitle.Name = "YPosTitle";
             this.YPosTitle.Size = new System.Drawing.Size(17, 16);
             this.YPosTitle.TabIndex = 3;
@@ -147,7 +150,7 @@
             // 
             this.ZPosTitle.AutoSize = true;
             this.ZPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ZPosTitle.Location = new System.Drawing.Point(19, 122);
+            this.ZPosTitle.Location = new System.Drawing.Point(18, 122);
             this.ZPosTitle.Name = "ZPosTitle";
             this.ZPosTitle.Size = new System.Drawing.Size(15, 16);
             this.ZPosTitle.TabIndex = 3;
@@ -163,6 +166,7 @@
             this.FkxRefreshBtn.Name = "FkxRefreshBtn";
             this.FkxRefreshBtn.Size = new System.Drawing.Size(20, 20);
             this.FkxRefreshBtn.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.FkxRefreshBtn, "Refresh entity list");
             this.FkxRefreshBtn.UseVisualStyleBackColor = true;
             this.FkxRefreshBtn.Click += new System.EventHandler(this.FkxRefreshBtn_Click);
             // 
@@ -185,6 +189,8 @@
             // entitiesSplitContainer.Panel2
             // 
             this.entitiesSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.pastePositionBtn);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.copyPositionBtn);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.entityPositionLabel);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.zPosTextBox);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.yPosTextBox);
@@ -196,8 +202,8 @@
             this.entitiesSplitContainer.Panel2.Controls.Add(this.XPosTitle);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.ZPosTitle);
             this.entitiesSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.entitiesSplitContainer.Size = new System.Drawing.Size(531, 316);
-            this.entitiesSplitContainer.SplitterDistance = 204;
+            this.entitiesSplitContainer.Size = new System.Drawing.Size(531, 313);
+            this.entitiesSplitContainer.SplitterDistance = 210;
             this.entitiesSplitContainer.TabIndex = 8;
             // 
             // EntitiesTitle
@@ -218,9 +224,37 @@
             this.treeView1.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(201, 290);
+            this.treeView1.Size = new System.Drawing.Size(207, 287);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // pastePositionBtn
+            // 
+            this.pastePositionBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pastePositionBtn.BackgroundImage")));
+            this.pastePositionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pastePositionBtn.FlatAppearance.BorderSize = 0;
+            this.pastePositionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pastePositionBtn.Location = new System.Drawing.Point(120, 50);
+            this.pastePositionBtn.Name = "pastePositionBtn";
+            this.pastePositionBtn.Size = new System.Drawing.Size(17, 17);
+            this.pastePositionBtn.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.pastePositionBtn, "Paste");
+            this.pastePositionBtn.UseVisualStyleBackColor = true;
+            this.pastePositionBtn.Click += new System.EventHandler(this.pastePositionBtn_Click);
+            // 
+            // copyPositionBtn
+            // 
+            this.copyPositionBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyPositionBtn.BackgroundImage")));
+            this.copyPositionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.copyPositionBtn.FlatAppearance.BorderSize = 0;
+            this.copyPositionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyPositionBtn.Location = new System.Drawing.Point(98, 50);
+            this.copyPositionBtn.Name = "copyPositionBtn";
+            this.copyPositionBtn.Size = new System.Drawing.Size(17, 17);
+            this.copyPositionBtn.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.copyPositionBtn, "Copy");
+            this.copyPositionBtn.UseVisualStyleBackColor = true;
+            this.copyPositionBtn.Click += new System.EventHandler(this.copyPositionBtn_Click);
             // 
             // entityPositionLabel
             // 
@@ -292,13 +326,16 @@
             // 
             // trainerTabs
             // 
+            this.trainerTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.trainerTabs.Controls.Add(this.entitiesTab);
             this.trainerTabs.Controls.Add(this.cameraTab);
             this.trainerTabs.Font = new System.Drawing.Font("Arial", 9F);
             this.trainerTabs.Location = new System.Drawing.Point(-3, 0);
             this.trainerTabs.Name = "trainerTabs";
             this.trainerTabs.SelectedIndex = 0;
-            this.trainerTabs.Size = new System.Drawing.Size(539, 344);
+            this.trainerTabs.Size = new System.Drawing.Size(539, 341);
             this.trainerTabs.TabIndex = 10;
             // 
             // entitiesTab
@@ -308,12 +345,13 @@
             this.entitiesTab.Location = new System.Drawing.Point(4, 24);
             this.entitiesTab.Name = "entitiesTab";
             this.entitiesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.entitiesTab.Size = new System.Drawing.Size(531, 316);
+            this.entitiesTab.Size = new System.Drawing.Size(531, 313);
             this.entitiesTab.TabIndex = 0;
             this.entitiesTab.Text = "Entities";
             // 
             // cameraTab
             // 
+            this.cameraTab.Controls.Add(this.camFocusOnJtBtn);
             this.cameraTab.Controls.Add(this.camFadeDistanceLabel);
             this.cameraTab.Controls.Add(this.camZoomLabel);
             this.cameraTab.Controls.Add(this.camFovLabel);
@@ -325,7 +363,7 @@
             this.cameraTab.Location = new System.Drawing.Point(4, 24);
             this.cameraTab.Name = "cameraTab";
             this.cameraTab.Padding = new System.Windows.Forms.Padding(3);
-            this.cameraTab.Size = new System.Drawing.Size(531, 316);
+            this.cameraTab.Size = new System.Drawing.Size(531, 313);
             this.cameraTab.TabIndex = 1;
             this.cameraTab.Text = "Camera";
             this.cameraTab.UseVisualStyleBackColor = true;
@@ -454,15 +492,27 @@
             this.resetCamBtn.UseVisualStyleBackColor = true;
             this.resetCamBtn.Click += new System.EventHandler(this.resetCamBtn_Click);
             // 
+            // camFocusOnJtBtn
+            // 
+            this.camFocusOnJtBtn.Location = new System.Drawing.Point(143, 41);
+            this.camFocusOnJtBtn.Name = "camFocusOnJtBtn";
+            this.camFocusOnJtBtn.Size = new System.Drawing.Size(109, 23);
+            this.camFocusOnJtBtn.TabIndex = 12;
+            this.camFocusOnJtBtn.Text = "Focus on Sly";
+            this.camFocusOnJtBtn.UseVisualStyleBackColor = true;
+            // 
             // TrainerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(534, 364);
+            this.ClientSize = new System.Drawing.Size(534, 361);
             this.Controls.Add(this.trainerTabs);
             this.Controls.Add(this.FooterPanel);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(550, 400);
+            this.MinimumSize = new System.Drawing.Size(550, 400);
             this.Name = "TrainerMain";
             this.Text = "Jewel";
             this.FooterPanel.ResumeLayout(false);
@@ -517,6 +567,9 @@
         private System.Windows.Forms.NumericUpDown camZoomValue;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label entityPositionLabel;
+        private System.Windows.Forms.Button pastePositionBtn;
+        private System.Windows.Forms.Button copyPositionBtn;
+        private System.Windows.Forms.Button camFocusOnJtBtn;
     }
 }
 
