@@ -124,13 +124,13 @@
             this.FooterPanel.Controls.Add(this.ProcIdTitle);
             this.FooterPanel.Location = new System.Drawing.Point(1, 341);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(533, 20);
+            this.FooterPanel.Size = new System.Drawing.Size(445, 20);
             this.FooterPanel.TabIndex = 4;
             // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(368, 3);
+            this.progressBar1.Location = new System.Drawing.Point(280, 3);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(160, 13);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -202,8 +202,8 @@
             this.entitiesSplitContainer.Panel2.Controls.Add(this.XPosTitle);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.ZPosTitle);
             this.entitiesSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.entitiesSplitContainer.Size = new System.Drawing.Size(531, 313);
-            this.entitiesSplitContainer.SplitterDistance = 210;
+            this.entitiesSplitContainer.Size = new System.Drawing.Size(443, 313);
+            this.entitiesSplitContainer.SplitterDistance = 219;
             this.entitiesSplitContainer.TabIndex = 8;
             // 
             // EntitiesTitle
@@ -224,7 +224,7 @@
             this.treeView1.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(207, 287);
+            this.treeView1.Size = new System.Drawing.Size(216, 287);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -335,7 +335,7 @@
             this.trainerTabs.Location = new System.Drawing.Point(-3, 0);
             this.trainerTabs.Name = "trainerTabs";
             this.trainerTabs.SelectedIndex = 0;
-            this.trainerTabs.Size = new System.Drawing.Size(539, 341);
+            this.trainerTabs.Size = new System.Drawing.Size(451, 341);
             this.trainerTabs.TabIndex = 10;
             // 
             // entitiesTab
@@ -345,7 +345,7 @@
             this.entitiesTab.Location = new System.Drawing.Point(4, 24);
             this.entitiesTab.Name = "entitiesTab";
             this.entitiesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.entitiesTab.Size = new System.Drawing.Size(531, 313);
+            this.entitiesTab.Size = new System.Drawing.Size(443, 313);
             this.entitiesTab.TabIndex = 0;
             this.entitiesTab.Text = "Entities";
             // 
@@ -363,7 +363,7 @@
             this.cameraTab.Location = new System.Drawing.Point(4, 24);
             this.cameraTab.Name = "cameraTab";
             this.cameraTab.Padding = new System.Windows.Forms.Padding(3);
-            this.cameraTab.Size = new System.Drawing.Size(531, 313);
+            this.cameraTab.Size = new System.Drawing.Size(443, 313);
             this.cameraTab.TabIndex = 1;
             this.cameraTab.Text = "Camera";
             this.cameraTab.UseVisualStyleBackColor = true;
@@ -506,13 +506,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(534, 361);
+            this.ClientSize = new System.Drawing.Size(446, 361);
             this.Controls.Add(this.trainerTabs);
             this.Controls.Add(this.FooterPanel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(550, 400);
-            this.MinimumSize = new System.Drawing.Size(550, 400);
             this.Name = "TrainerMain";
             this.Text = "Jewel";
             this.FooterPanel.ResumeLayout(false);
