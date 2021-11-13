@@ -408,6 +408,32 @@ namespace Jewel
             });
         }
 
+        // Handle update entity position text box value
+        private void positionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            string text = textBox.Text;
+            float val = 0;
+            if (float.TryParse(text, out val))
+            {
+                switch (textBox.Tag)
+                {
+                    case "x":
+                        selectedEntity.transform.relPosition.X = val;
+                        break;
+                    case "y":
+                        selectedEntity.transform.relPosition.Y = val;
+                        break;
+                    case "z":
+                        selectedEntity.transform.relPosition.Z = val;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         // Handle warp to selected button click
         private void WarpToBtn_Click(object sender, EventArgs e)
         {
@@ -447,7 +473,6 @@ namespace Jewel
         {
             camera.zoom = (float)camZoomValue.Value;
         }
-
 
         /* Background worker (trainer logic) */
 
@@ -536,15 +561,24 @@ namespace Jewel
                     {
                         xPosTextBox.Invoke((MethodInvoker)delegate
                         {
-                            xPosTextBox.Text = selectedEntity.transform.truePosition.X.ToString();
+                            if (!xPosTextBox.Focused)
+                            {
+                                xPosTextBox.Text = selectedEntity.transform.truePosition.X.ToString();
+                            }
                         });
                         yPosTextBox.Invoke((MethodInvoker)delegate
                         {
-                            yPosTextBox.Text = selectedEntity.transform.truePosition.Y.ToString();
+                            if (!yPosTextBox.Focused)
+                            {
+                                yPosTextBox.Text = selectedEntity.transform.truePosition.Y.ToString();
+                            }
                         });
                         zPosTextBox.Invoke((MethodInvoker)delegate
                         {
-                            zPosTextBox.Text = selectedEntity.transform.truePosition.Z.ToString();
+                            if (!zPosTextBox.Focused)
+                            {
+                                zPosTextBox.Text = selectedEntity.transform.truePosition.Z.ToString();
+                            }
                         });
                     }
                 }

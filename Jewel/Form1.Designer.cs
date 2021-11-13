@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrainerMain));
             this.ProcIdTitle = new System.Windows.Forms.Label();
             this.ProcIdLabel = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.entitiesSplitContainer = new System.Windows.Forms.SplitContainer();
             this.EntitiesTitle = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.entityPositionLabel = new System.Windows.Forms.Label();
             this.zPosTextBox = new System.Windows.Forms.TextBox();
             this.yPosTextBox = new System.Windows.Forms.TextBox();
             this.xPosTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +60,7 @@
             this.camFadeDistanceValue = new System.Windows.Forms.NumericUpDown();
             this.camFovValue = new System.Windows.Forms.NumericUpDown();
             this.resetCamBtn = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.FooterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).BeginInit();
             this.entitiesSplitContainer.Panel1.SuspendLayout();
@@ -100,10 +103,10 @@
             // XPosTitle
             // 
             this.XPosTitle.AutoSize = true;
-            this.XPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XPosTitle.Location = new System.Drawing.Point(18, 57);
+            this.XPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XPosTitle.Location = new System.Drawing.Point(18, 74);
             this.XPosTitle.Name = "XPosTitle";
-            this.XPosTitle.Size = new System.Drawing.Size(17, 16);
+            this.XPosTitle.Size = new System.Drawing.Size(15, 16);
             this.XPosTitle.TabIndex = 3;
             this.XPosTitle.Text = "X";
             // 
@@ -133,18 +136,18 @@
             // YPosTitle
             // 
             this.YPosTitle.AutoSize = true;
-            this.YPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YPosTitle.Location = new System.Drawing.Point(18, 83);
+            this.YPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YPosTitle.Location = new System.Drawing.Point(18, 98);
             this.YPosTitle.Name = "YPosTitle";
-            this.YPosTitle.Size = new System.Drawing.Size(16, 16);
+            this.YPosTitle.Size = new System.Drawing.Size(17, 16);
             this.YPosTitle.TabIndex = 3;
             this.YPosTitle.Text = "Y";
             // 
             // ZPosTitle
             // 
             this.ZPosTitle.AutoSize = true;
-            this.ZPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ZPosTitle.Location = new System.Drawing.Point(19, 109);
+            this.ZPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ZPosTitle.Location = new System.Drawing.Point(19, 122);
             this.ZPosTitle.Name = "ZPosTitle";
             this.ZPosTitle.Size = new System.Drawing.Size(15, 16);
             this.ZPosTitle.TabIndex = 3;
@@ -182,6 +185,7 @@
             // entitiesSplitContainer.Panel2
             // 
             this.entitiesSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.entityPositionLabel);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.zPosTextBox);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.yPosTextBox);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.xPosTextBox);
@@ -211,36 +215,54 @@
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView1.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(201, 290);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
+            // entityPositionLabel
+            // 
+            this.entityPositionLabel.AutoSize = true;
+            this.entityPositionLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entityPositionLabel.Location = new System.Drawing.Point(18, 50);
+            this.entityPositionLabel.Name = "entityPositionLabel";
+            this.entityPositionLabel.Size = new System.Drawing.Size(59, 16);
+            this.entityPositionLabel.TabIndex = 12;
+            this.entityPositionLabel.Text = "Position";
+            this.entityPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // zPosTextBox
             // 
-            this.zPosTextBox.Location = new System.Drawing.Point(38, 106);
+            this.zPosTextBox.Location = new System.Drawing.Point(37, 119);
             this.zPosTextBox.Name = "zPosTextBox";
             this.zPosTextBox.Size = new System.Drawing.Size(100, 21);
             this.zPosTextBox.TabIndex = 9;
+            this.zPosTextBox.Tag = "z";
+            this.zPosTextBox.TextChanged += new System.EventHandler(this.positionTextBox_TextChanged);
             // 
             // yPosTextBox
             // 
-            this.yPosTextBox.Location = new System.Drawing.Point(38, 80);
+            this.yPosTextBox.Location = new System.Drawing.Point(37, 95);
             this.yPosTextBox.Name = "yPosTextBox";
             this.yPosTextBox.Size = new System.Drawing.Size(100, 21);
             this.yPosTextBox.TabIndex = 9;
+            this.yPosTextBox.Tag = "y";
+            this.yPosTextBox.TextChanged += new System.EventHandler(this.positionTextBox_TextChanged);
             // 
             // xPosTextBox
             // 
-            this.xPosTextBox.Location = new System.Drawing.Point(38, 54);
+            this.xPosTextBox.Location = new System.Drawing.Point(37, 71);
             this.xPosTextBox.Name = "xPosTextBox";
             this.xPosTextBox.Size = new System.Drawing.Size(100, 21);
             this.xPosTextBox.TabIndex = 9;
+            this.xPosTextBox.Tag = "x";
+            this.xPosTextBox.TextChanged += new System.EventHandler(this.positionTextBox_TextChanged);
             // 
             // SetCamFocusBtn
             // 
-            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 171);
+            this.SetCamFocusBtn.Location = new System.Drawing.Point(17, 202);
             this.SetCamFocusBtn.Name = "SetCamFocusBtn";
             this.SetCamFocusBtn.Size = new System.Drawing.Size(84, 23);
             this.SetCamFocusBtn.TabIndex = 8;
@@ -250,7 +272,7 @@
             // 
             // WarpToBtn
             // 
-            this.WarpToBtn.Location = new System.Drawing.Point(18, 142);
+            this.WarpToBtn.Location = new System.Drawing.Point(17, 146);
             this.WarpToBtn.Name = "WarpToBtn";
             this.WarpToBtn.Size = new System.Drawing.Size(84, 23);
             this.WarpToBtn.TabIndex = 7;
@@ -323,7 +345,7 @@
             // 
             this.camZoomLabel.AutoSize = true;
             this.camZoomLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.camZoomLabel.Location = new System.Drawing.Point(16, 217);
+            this.camZoomLabel.Location = new System.Drawing.Point(16, 198);
             this.camZoomLabel.Name = "camZoomLabel";
             this.camZoomLabel.Size = new System.Drawing.Size(43, 16);
             this.camZoomLabel.TabIndex = 11;
@@ -334,7 +356,7 @@
             // 
             this.camFovLabel.AutoSize = true;
             this.camFovLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.camFovLabel.Location = new System.Drawing.Point(16, 154);
+            this.camFovLabel.Location = new System.Drawing.Point(16, 142);
             this.camFovLabel.Name = "camFovLabel";
             this.camFovLabel.Size = new System.Drawing.Size(35, 16);
             this.camFovLabel.TabIndex = 11;
@@ -358,7 +380,7 @@
             0,
             0,
             0});
-            this.camZoomValue.Location = new System.Drawing.Point(19, 236);
+            this.camZoomValue.Location = new System.Drawing.Point(19, 217);
             this.camZoomValue.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -406,7 +428,7 @@
             0,
             0,
             65536});
-            this.camFovValue.Location = new System.Drawing.Point(19, 173);
+            this.camFovValue.Location = new System.Drawing.Point(19, 161);
             this.camFovValue.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -493,6 +515,8 @@
         private System.Windows.Forms.NumericUpDown camFadeDistanceValue;
         private System.Windows.Forms.Label camZoomLabel;
         private System.Windows.Forms.NumericUpDown camZoomValue;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label entityPositionLabel;
     }
 }
 
