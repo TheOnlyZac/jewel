@@ -224,7 +224,7 @@
             this.treeView1.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(216, 287);
+            this.treeView1.Size = new System.Drawing.Size(229, 287);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
