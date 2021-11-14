@@ -390,13 +390,13 @@ namespace Jewel
             });
         }
 
-        // Handle refresh button click
+        // Handle Entity refresh button click
         private void FkxRefreshBtn_Click(object sender, EventArgs e)
         {
             this.FindFkxEntries();
         }
 
-        // Hangle treelist select
+        // Handle Entity treelist select
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             EntityIdLabel.Invoke((MethodInvoker)delegate
@@ -408,14 +408,14 @@ namespace Jewel
             });
         }
 
-        // Handle update entity position text box value
+        // Handle update entity position
         private void positionTextBox_TextChanged(object sender, EventArgs e)
         {
             if (selectedEntity == null) return;
 
             TextBox textBox = sender as TextBox;
-
             string text = textBox.Text;
+
             float val = 0;
             if (float.TryParse(text, out val))
             {
@@ -487,6 +487,49 @@ namespace Jewel
             camera.focus = selectedEntity.getPointer();
         }
 
+        // Handle update entity position
+        private void scaleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (selectedEntity == null) return;
+
+            TextBox textBox = sender as TextBox;
+            string text = textBox.Text;
+
+            float val = 0;
+            if (float.TryParse(text, out val))
+            {
+                switch (textBox.Tag)
+                {
+                    case "x":
+                        selectedEntity.transform.scaleX.X = val;
+                        break;
+                    case "y":
+                        selectedEntity.transform.scaleY.Y = val;
+                        break;
+                    case "z":
+                        selectedEntity.transform.scaleZ.Z = val;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        // Handle scale reset button clicked
+        private void entityScaleResetBtn_Click(object sender, EventArgs e)
+        {
+            if (selectedEntity == null || selectedEntity.transform == null) return;
+
+            selectedEntity.transform.scaleX.X = 1;
+            selectedEntity.transform.scaleY.Y = 1;
+            selectedEntity.transform.scaleZ.Z = 1;
+        }
+
+        
+        /* DAG Tab */
+
+        // todo
+
 
         /* Camera Tab */
 
@@ -530,7 +573,7 @@ namespace Jewel
 
             while (true)
             {
-                // check if process is missing/closed
+                /* Check if process is missing/closed */
                 pID = m.GetProcIdFromName("pcsx2");
                 if (pID == 0 && isProcOpen)
                 {
@@ -566,8 +609,7 @@ namespace Jewel
                     }
                 }
 
-                // process is open, so let's do this
-                
+                /* Process is open, so let's do this */
                 if (jt == null)
                 {
                     jt = new Entity(m.ReadUInt("202e1e40"));
@@ -580,32 +622,36 @@ namespace Jewel
                 }
                 else
                 {
-                    // Update render distance value
+                    // Write camera render distance to ui
                     camFadeDistanceValue.Invoke((MethodInvoker)delegate
                     {
                         camFadeDistanceValue.Value = (decimal)camera.fadeDistance;
                     });
-                    // Update fov value
+                    // Write camera fov to ui
                     camFovValue.Invoke((MethodInvoker)delegate
                     {
                         camFovValue.Value = (decimal)camera.fov;
                     });
-                    // Update follow distance value
+                    // Write camera follow distance to ui
                     camZoomValue.Invoke((MethodInvoker)delegate
                     {
                         camZoomValue.Value = (decimal)camera.zoom;
                     });
                 }
 
-                // write selected entity position to ui
+                // Check if there is an entity selected
                 if (selectedEntity != null)
                 {
+                    // Write entity pointer to UI
                     EntityIdLabel.Invoke((MethodInvoker)delegate
                     {
                         EntityIdLabel.Text = selectedEntity.getPointer().ToString("X");
                     });
+
+                    // Check if entity has a Transform
                     if (selectedEntity.transform != null)
                     {
+                        // Write entity position to UI
                         xPosTextBox.Invoke((MethodInvoker)delegate
                         {
                             if (!xPosTextBox.Focused)
@@ -625,6 +671,29 @@ namespace Jewel
                             if (!zPosTextBox.Focused)
                             {
                                 zPosTextBox.Text = selectedEntity.transform.truePosition.Z.ToString();
+                            }
+                        });
+
+                        // Write entity scale to UI
+                        xPosTextBox.Invoke((MethodInvoker)delegate
+                        {
+                            if (!xScaleTextBox.Focused)
+                            {
+                                xScaleTextBox.Text = selectedEntity.transform.scaleX.X.ToString();
+                            }
+                        });
+                        yPosTextBox.Invoke((MethodInvoker)delegate
+                        {
+                            if (!yScaleTextBox.Focused)
+                            {
+                                yScaleTextBox.Text = selectedEntity.transform.scaleY.Y.ToString();
+                            }
+                        });
+                        zPosTextBox.Invoke((MethodInvoker)delegate
+                        {
+                            if (!zScaleTextBox.Focused)
+                            {
+                                zScaleTextBox.Text = selectedEntity.transform.scaleZ.Z.ToString();
                             }
                         });
                     }
