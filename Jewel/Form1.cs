@@ -557,7 +557,7 @@ namespace Jewel
                         // if not, set proc id label to "None"
                         ProcIdLabel.Invoke((MethodInvoker)delegate
                         {
-                            ProcIdLabel.Text = "None";
+                            ProcIdLabel.Text = "Not Attached";
                             ProcIdLabel.ForeColor = Color.DarkRed;
                         });
 

@@ -34,7 +34,6 @@
             this.ProcIdLabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.XPosTitle = new System.Windows.Forms.Label();
-            this.FooterPanel = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.YPosTitle = new System.Windows.Forms.Label();
             this.ZPosTitle = new System.Windows.Forms.Label();
@@ -42,9 +41,8 @@
             this.entitiesSplitContainer = new System.Windows.Forms.SplitContainer();
             this.EntitiesTitle = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.pastePositionBtn = new System.Windows.Forms.Button();
-            this.copyPositionBtn = new System.Windows.Forms.Button();
-            this.entityPositionLabel = new System.Windows.Forms.Label();
+            this.pastePosBtn = new System.Windows.Forms.Button();
+            this.copyPosBtn = new System.Windows.Forms.Button();
             this.zPosTextBox = new System.Windows.Forms.TextBox();
             this.yPosTextBox = new System.Windows.Forms.TextBox();
             this.xPosTextBox = new System.Windows.Forms.TextBox();
@@ -54,6 +52,7 @@
             this.trainerTabs = new System.Windows.Forms.TabControl();
             this.entitiesTab = new System.Windows.Forms.TabPage();
             this.cameraTab = new System.Windows.Forms.TabPage();
+            this.camFocusOnJtBtn = new System.Windows.Forms.Button();
             this.camFadeDistanceLabel = new System.Windows.Forms.Label();
             this.camZoomLabel = new System.Windows.Forms.Label();
             this.camFovLabel = new System.Windows.Forms.Label();
@@ -63,8 +62,8 @@
             this.camFovValue = new System.Windows.Forms.NumericUpDown();
             this.resetCamBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.camFocusOnJtBtn = new System.Windows.Forms.Button();
-            this.FooterPanel.SuspendLayout();
+            this.posGroupBox = new System.Windows.Forms.GroupBox();
+            this.renderOptionsGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).BeginInit();
             this.entitiesSplitContainer.Panel1.SuspendLayout();
             this.entitiesSplitContainer.Panel2.SuspendLayout();
@@ -75,6 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.camZoomValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFadeDistanceValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).BeginInit();
+            this.posGroupBox.SuspendLayout();
+            this.renderOptionsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProcIdTitle
@@ -82,7 +83,7 @@
             this.ProcIdTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ProcIdTitle.AutoSize = true;
             this.ProcIdTitle.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.ProcIdTitle.Location = new System.Drawing.Point(8, 2);
+            this.ProcIdTitle.Location = new System.Drawing.Point(10, 343);
             this.ProcIdTitle.Name = "ProcIdTitle";
             this.ProcIdTitle.Size = new System.Drawing.Size(62, 14);
             this.ProcIdTitle.TabIndex = 0;
@@ -93,7 +94,7 @@
             this.ProcIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ProcIdLabel.AutoSize = true;
             this.ProcIdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.ProcIdLabel.Location = new System.Drawing.Point(67, 2);
+            this.ProcIdLabel.Location = new System.Drawing.Point(69, 343);
             this.ProcIdLabel.Name = "ProcIdLabel";
             this.ProcIdLabel.Size = new System.Drawing.Size(25, 14);
             this.ProcIdLabel.TabIndex = 1;
@@ -107,30 +108,16 @@
             // 
             this.XPosTitle.AutoSize = true;
             this.XPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XPosTitle.Location = new System.Drawing.Point(18, 74);
+            this.XPosTitle.Location = new System.Drawing.Point(12, 25);
             this.XPosTitle.Name = "XPosTitle";
             this.XPosTitle.Size = new System.Drawing.Size(15, 16);
             this.XPosTitle.TabIndex = 3;
             this.XPosTitle.Text = "X";
             // 
-            // FooterPanel
-            // 
-            this.FooterPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FooterPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.FooterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FooterPanel.Controls.Add(this.progressBar1);
-            this.FooterPanel.Controls.Add(this.ProcIdLabel);
-            this.FooterPanel.Controls.Add(this.ProcIdTitle);
-            this.FooterPanel.Location = new System.Drawing.Point(1, 341);
-            this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(445, 20);
-            this.FooterPanel.TabIndex = 4;
-            // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(280, 3);
+            this.progressBar1.Location = new System.Drawing.Point(241, 344);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(160, 13);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -140,7 +127,7 @@
             // 
             this.YPosTitle.AutoSize = true;
             this.YPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YPosTitle.Location = new System.Drawing.Point(17, 98);
+            this.YPosTitle.Location = new System.Drawing.Point(11, 49);
             this.YPosTitle.Name = "YPosTitle";
             this.YPosTitle.Size = new System.Drawing.Size(17, 16);
             this.YPosTitle.TabIndex = 3;
@@ -150,7 +137,7 @@
             // 
             this.ZPosTitle.AutoSize = true;
             this.ZPosTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ZPosTitle.Location = new System.Drawing.Point(18, 122);
+            this.ZPosTitle.Location = new System.Drawing.Point(12, 73);
             this.ZPosTitle.Name = "ZPosTitle";
             this.ZPosTitle.Size = new System.Drawing.Size(15, 16);
             this.ZPosTitle.TabIndex = 3;
@@ -176,6 +163,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.entitiesSplitContainer.BackColor = System.Drawing.Color.Transparent;
+            this.entitiesSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.entitiesSplitContainer.Location = new System.Drawing.Point(0, 0);
             this.entitiesSplitContainer.Name = "entitiesSplitContainer";
             // 
@@ -189,21 +177,13 @@
             // entitiesSplitContainer.Panel2
             // 
             this.entitiesSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.pastePositionBtn);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.copyPositionBtn);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.entityPositionLabel);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.zPosTextBox);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.yPosTextBox);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.xPosTextBox);
+            this.entitiesSplitContainer.Panel2.Controls.Add(this.posGroupBox);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.SetCamFocusBtn);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.WarpToBtn);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.EntityIdLabel);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.YPosTitle);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.XPosTitle);
-            this.entitiesSplitContainer.Panel2.Controls.Add(this.ZPosTitle);
             this.entitiesSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.entitiesSplitContainer.Size = new System.Drawing.Size(443, 313);
-            this.entitiesSplitContainer.SplitterDistance = 219;
+            this.entitiesSplitContainer.Panel2.Enabled = false;
+            this.entitiesSplitContainer.Size = new System.Drawing.Size(402, 313);
+            this.entitiesSplitContainer.SplitterDistance = 195;
             this.entitiesSplitContainer.TabIndex = 8;
             // 
             // EntitiesTitle
@@ -224,52 +204,42 @@
             this.treeView1.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView1.Location = new System.Drawing.Point(0, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(229, 287);
+            this.treeView1.Size = new System.Drawing.Size(205, 287);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // pastePositionBtn
+            // pastePosBtn
             // 
-            this.pastePositionBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pastePositionBtn.BackgroundImage")));
-            this.pastePositionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pastePositionBtn.FlatAppearance.BorderSize = 0;
-            this.pastePositionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pastePositionBtn.Location = new System.Drawing.Point(120, 50);
-            this.pastePositionBtn.Name = "pastePositionBtn";
-            this.pastePositionBtn.Size = new System.Drawing.Size(17, 17);
-            this.pastePositionBtn.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.pastePositionBtn, "Paste");
-            this.pastePositionBtn.UseVisualStyleBackColor = true;
-            this.pastePositionBtn.Click += new System.EventHandler(this.pastePositionBtn_Click);
+            this.pastePosBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pastePosBtn.BackgroundImage")));
+            this.pastePosBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pastePosBtn.FlatAppearance.BorderSize = 0;
+            this.pastePosBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pastePosBtn.Location = new System.Drawing.Point(93, 0);
+            this.pastePosBtn.Name = "pastePosBtn";
+            this.pastePosBtn.Size = new System.Drawing.Size(15, 15);
+            this.pastePosBtn.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.pastePosBtn, "Paste");
+            this.pastePosBtn.UseVisualStyleBackColor = true;
+            this.pastePosBtn.Click += new System.EventHandler(this.pastePositionBtn_Click);
             // 
-            // copyPositionBtn
+            // copyPosBtn
             // 
-            this.copyPositionBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyPositionBtn.BackgroundImage")));
-            this.copyPositionBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.copyPositionBtn.FlatAppearance.BorderSize = 0;
-            this.copyPositionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.copyPositionBtn.Location = new System.Drawing.Point(98, 50);
-            this.copyPositionBtn.Name = "copyPositionBtn";
-            this.copyPositionBtn.Size = new System.Drawing.Size(17, 17);
-            this.copyPositionBtn.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.copyPositionBtn, "Copy");
-            this.copyPositionBtn.UseVisualStyleBackColor = true;
-            this.copyPositionBtn.Click += new System.EventHandler(this.copyPositionBtn_Click);
-            // 
-            // entityPositionLabel
-            // 
-            this.entityPositionLabel.AutoSize = true;
-            this.entityPositionLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entityPositionLabel.Location = new System.Drawing.Point(18, 50);
-            this.entityPositionLabel.Name = "entityPositionLabel";
-            this.entityPositionLabel.Size = new System.Drawing.Size(59, 16);
-            this.entityPositionLabel.TabIndex = 12;
-            this.entityPositionLabel.Text = "Position";
-            this.entityPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.copyPosBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyPosBtn.BackgroundImage")));
+            this.copyPosBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.copyPosBtn.FlatAppearance.BorderSize = 0;
+            this.copyPosBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyPosBtn.Location = new System.Drawing.Point(71, 0);
+            this.copyPosBtn.Name = "copyPosBtn";
+            this.copyPosBtn.Size = new System.Drawing.Size(15, 15);
+            this.copyPosBtn.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.copyPosBtn, "Copy");
+            this.copyPosBtn.UseVisualStyleBackColor = true;
+            this.copyPosBtn.Click += new System.EventHandler(this.copyPositionBtn_Click);
             // 
             // zPosTextBox
             // 
-            this.zPosTextBox.Location = new System.Drawing.Point(37, 119);
+            this.zPosTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zPosTextBox.Location = new System.Drawing.Point(31, 70);
             this.zPosTextBox.Name = "zPosTextBox";
             this.zPosTextBox.Size = new System.Drawing.Size(100, 21);
             this.zPosTextBox.TabIndex = 9;
@@ -278,7 +248,8 @@
             // 
             // yPosTextBox
             // 
-            this.yPosTextBox.Location = new System.Drawing.Point(37, 95);
+            this.yPosTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yPosTextBox.Location = new System.Drawing.Point(31, 46);
             this.yPosTextBox.Name = "yPosTextBox";
             this.yPosTextBox.Size = new System.Drawing.Size(100, 21);
             this.yPosTextBox.TabIndex = 9;
@@ -287,7 +258,8 @@
             // 
             // xPosTextBox
             // 
-            this.xPosTextBox.Location = new System.Drawing.Point(37, 71);
+            this.xPosTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xPosTextBox.Location = new System.Drawing.Point(31, 22);
             this.xPosTextBox.Name = "xPosTextBox";
             this.xPosTextBox.Size = new System.Drawing.Size(100, 21);
             this.xPosTextBox.TabIndex = 9;
@@ -296,7 +268,7 @@
             // 
             // SetCamFocusBtn
             // 
-            this.SetCamFocusBtn.Location = new System.Drawing.Point(17, 202);
+            this.SetCamFocusBtn.Location = new System.Drawing.Point(18, 197);
             this.SetCamFocusBtn.Name = "SetCamFocusBtn";
             this.SetCamFocusBtn.Size = new System.Drawing.Size(84, 23);
             this.SetCamFocusBtn.TabIndex = 8;
@@ -306,7 +278,8 @@
             // 
             // WarpToBtn
             // 
-            this.WarpToBtn.Location = new System.Drawing.Point(17, 146);
+            this.WarpToBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WarpToBtn.Location = new System.Drawing.Point(11, 97);
             this.WarpToBtn.Name = "WarpToBtn";
             this.WarpToBtn.Size = new System.Drawing.Size(84, 23);
             this.WarpToBtn.TabIndex = 7;
@@ -335,7 +308,7 @@
             this.trainerTabs.Location = new System.Drawing.Point(-3, 0);
             this.trainerTabs.Name = "trainerTabs";
             this.trainerTabs.SelectedIndex = 0;
-            this.trainerTabs.Size = new System.Drawing.Size(451, 341);
+            this.trainerTabs.Size = new System.Drawing.Size(410, 341);
             this.trainerTabs.TabIndex = 10;
             // 
             // entitiesTab
@@ -345,34 +318,38 @@
             this.entitiesTab.Location = new System.Drawing.Point(4, 24);
             this.entitiesTab.Name = "entitiesTab";
             this.entitiesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.entitiesTab.Size = new System.Drawing.Size(443, 313);
+            this.entitiesTab.Size = new System.Drawing.Size(402, 313);
             this.entitiesTab.TabIndex = 0;
             this.entitiesTab.Text = "Entities";
             // 
             // cameraTab
             // 
+            this.cameraTab.Controls.Add(this.renderOptionsGroupBox);
             this.cameraTab.Controls.Add(this.camFocusOnJtBtn);
-            this.cameraTab.Controls.Add(this.camFadeDistanceLabel);
-            this.cameraTab.Controls.Add(this.camZoomLabel);
-            this.cameraTab.Controls.Add(this.camFovLabel);
             this.cameraTab.Controls.Add(this.cameraTabTitle);
-            this.cameraTab.Controls.Add(this.camZoomValue);
-            this.cameraTab.Controls.Add(this.camFadeDistanceValue);
-            this.cameraTab.Controls.Add(this.camFovValue);
             this.cameraTab.Controls.Add(this.resetCamBtn);
             this.cameraTab.Location = new System.Drawing.Point(4, 24);
             this.cameraTab.Name = "cameraTab";
             this.cameraTab.Padding = new System.Windows.Forms.Padding(3);
-            this.cameraTab.Size = new System.Drawing.Size(443, 313);
+            this.cameraTab.Size = new System.Drawing.Size(402, 313);
             this.cameraTab.TabIndex = 1;
             this.cameraTab.Text = "Camera";
             this.cameraTab.UseVisualStyleBackColor = true;
+            // 
+            // camFocusOnJtBtn
+            // 
+            this.camFocusOnJtBtn.Location = new System.Drawing.Point(183, 79);
+            this.camFocusOnJtBtn.Name = "camFocusOnJtBtn";
+            this.camFocusOnJtBtn.Size = new System.Drawing.Size(120, 23);
+            this.camFocusOnJtBtn.TabIndex = 12;
+            this.camFocusOnJtBtn.Text = "Focus on Sly";
+            this.camFocusOnJtBtn.UseVisualStyleBackColor = true;
             // 
             // camFadeDistanceLabel
             // 
             this.camFadeDistanceLabel.AutoSize = true;
             this.camFadeDistanceLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.camFadeDistanceLabel.Location = new System.Drawing.Point(16, 86);
+            this.camFadeDistanceLabel.Location = new System.Drawing.Point(15, 26);
             this.camFadeDistanceLabel.Name = "camFadeDistanceLabel";
             this.camFadeDistanceLabel.Size = new System.Drawing.Size(98, 16);
             this.camFadeDistanceLabel.TabIndex = 11;
@@ -383,7 +360,7 @@
             // 
             this.camZoomLabel.AutoSize = true;
             this.camZoomLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.camZoomLabel.Location = new System.Drawing.Point(16, 198);
+            this.camZoomLabel.Location = new System.Drawing.Point(15, 138);
             this.camZoomLabel.Name = "camZoomLabel";
             this.camZoomLabel.Size = new System.Drawing.Size(43, 16);
             this.camZoomLabel.TabIndex = 11;
@@ -394,7 +371,7 @@
             // 
             this.camFovLabel.AutoSize = true;
             this.camFovLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.camFovLabel.Location = new System.Drawing.Point(16, 142);
+            this.camFovLabel.Location = new System.Drawing.Point(15, 82);
             this.camFovLabel.Name = "camFovLabel";
             this.camFovLabel.Size = new System.Drawing.Size(35, 16);
             this.camFovLabel.TabIndex = 11;
@@ -407,18 +384,19 @@
             this.cameraTabTitle.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cameraTabTitle.Location = new System.Drawing.Point(13, 16);
             this.cameraTabTitle.Name = "cameraTabTitle";
-            this.cameraTabTitle.Size = new System.Drawing.Size(160, 22);
+            this.cameraTabTitle.Size = new System.Drawing.Size(82, 22);
             this.cameraTabTitle.TabIndex = 7;
-            this.cameraTabTitle.Text = "Camera Options";
+            this.cameraTabTitle.Text = "Camera";
             // 
             // camZoomValue
             // 
+            this.camZoomValue.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.camZoomValue.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.camZoomValue.Location = new System.Drawing.Point(19, 217);
+            this.camZoomValue.Location = new System.Drawing.Point(18, 157);
             this.camZoomValue.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -437,12 +415,13 @@
             // camFadeDistanceValue
             // 
             this.camFadeDistanceValue.DecimalPlaces = 2;
+            this.camFadeDistanceValue.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.camFadeDistanceValue.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.camFadeDistanceValue.Location = new System.Drawing.Point(19, 105);
+            this.camFadeDistanceValue.Location = new System.Drawing.Point(18, 45);
             this.camFadeDistanceValue.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -461,12 +440,13 @@
             // camFovValue
             // 
             this.camFovValue.DecimalPlaces = 2;
+            this.camFovValue.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.camFovValue.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.camFovValue.Location = new System.Drawing.Point(19, 161);
+            this.camFovValue.Location = new System.Drawing.Point(18, 101);
             this.camFovValue.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -484,7 +464,7 @@
             // 
             // resetCamBtn
             // 
-            this.resetCamBtn.Location = new System.Drawing.Point(17, 41);
+            this.resetCamBtn.Location = new System.Drawing.Point(183, 50);
             this.resetCamBtn.Name = "resetCamBtn";
             this.resetCamBtn.Size = new System.Drawing.Size(120, 23);
             this.resetCamBtn.TabIndex = 0;
@@ -492,30 +472,56 @@
             this.resetCamBtn.UseVisualStyleBackColor = true;
             this.resetCamBtn.Click += new System.EventHandler(this.resetCamBtn_Click);
             // 
-            // camFocusOnJtBtn
+            // posGroupBox
             // 
-            this.camFocusOnJtBtn.Location = new System.Drawing.Point(143, 41);
-            this.camFocusOnJtBtn.Name = "camFocusOnJtBtn";
-            this.camFocusOnJtBtn.Size = new System.Drawing.Size(109, 23);
-            this.camFocusOnJtBtn.TabIndex = 12;
-            this.camFocusOnJtBtn.Text = "Focus on Sly";
-            this.camFocusOnJtBtn.UseVisualStyleBackColor = true;
+            this.posGroupBox.Controls.Add(this.pastePosBtn);
+            this.posGroupBox.Controls.Add(this.ZPosTitle);
+            this.posGroupBox.Controls.Add(this.copyPosBtn);
+            this.posGroupBox.Controls.Add(this.XPosTitle);
+            this.posGroupBox.Controls.Add(this.YPosTitle);
+            this.posGroupBox.Controls.Add(this.zPosTextBox);
+            this.posGroupBox.Controls.Add(this.WarpToBtn);
+            this.posGroupBox.Controls.Add(this.yPosTextBox);
+            this.posGroupBox.Controls.Add(this.xPosTextBox);
+            this.posGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.posGroupBox.Location = new System.Drawing.Point(18, 52);
+            this.posGroupBox.Name = "posGroupBox";
+            this.posGroupBox.Size = new System.Drawing.Size(147, 127);
+            this.posGroupBox.TabIndex = 11;
+            this.posGroupBox.TabStop = false;
+            this.posGroupBox.Text = "Position";
+            // 
+            // renderOptionsGroupBox
+            // 
+            this.renderOptionsGroupBox.Controls.Add(this.camFadeDistanceLabel);
+            this.renderOptionsGroupBox.Controls.Add(this.camFovValue);
+            this.renderOptionsGroupBox.Controls.Add(this.camFadeDistanceValue);
+            this.renderOptionsGroupBox.Controls.Add(this.camZoomLabel);
+            this.renderOptionsGroupBox.Controls.Add(this.camZoomValue);
+            this.renderOptionsGroupBox.Controls.Add(this.camFovLabel);
+            this.renderOptionsGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.renderOptionsGroupBox.Location = new System.Drawing.Point(17, 50);
+            this.renderOptionsGroupBox.Name = "renderOptionsGroupBox";
+            this.renderOptionsGroupBox.Size = new System.Drawing.Size(139, 190);
+            this.renderOptionsGroupBox.TabIndex = 13;
+            this.renderOptionsGroupBox.TabStop = false;
+            this.renderOptionsGroupBox.Text = "Render Options";
             // 
             // TrainerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(446, 361);
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ClientSize = new System.Drawing.Size(405, 361);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.trainerTabs);
-            this.Controls.Add(this.FooterPanel);
+            this.Controls.Add(this.ProcIdLabel);
+            this.Controls.Add(this.ProcIdTitle);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(550, 400);
             this.Name = "TrainerMain";
             this.Text = "Jewel";
-            this.FooterPanel.ResumeLayout(false);
-            this.FooterPanel.PerformLayout();
             this.entitiesSplitContainer.Panel1.ResumeLayout(false);
             this.entitiesSplitContainer.Panel1.PerformLayout();
             this.entitiesSplitContainer.Panel2.ResumeLayout(false);
@@ -529,7 +535,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.camZoomValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFadeDistanceValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).EndInit();
+            this.posGroupBox.ResumeLayout(false);
+            this.posGroupBox.PerformLayout();
+            this.renderOptionsGroupBox.ResumeLayout(false);
+            this.renderOptionsGroupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -539,7 +550,6 @@
         private System.Windows.Forms.Label ProcIdLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label XPosTitle;
-        private System.Windows.Forms.Panel FooterPanel;
         private System.Windows.Forms.Label YPosTitle;
         private System.Windows.Forms.Label ZPosTitle;
         private System.Windows.Forms.Button FkxRefreshBtn;
@@ -565,10 +575,11 @@
         private System.Windows.Forms.Label camZoomLabel;
         private System.Windows.Forms.NumericUpDown camZoomValue;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label entityPositionLabel;
-        private System.Windows.Forms.Button pastePositionBtn;
-        private System.Windows.Forms.Button copyPositionBtn;
+        private System.Windows.Forms.Button pastePosBtn;
+        private System.Windows.Forms.Button copyPosBtn;
         private System.Windows.Forms.Button camFocusOnJtBtn;
+        private System.Windows.Forms.GroupBox posGroupBox;
+        private System.Windows.Forms.GroupBox renderOptionsGroupBox;
     }
 }
 
