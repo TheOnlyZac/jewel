@@ -62,6 +62,7 @@ namespace Jewel
             private uint pointer;
             private static uint oId = 0x18;
             private static uint oTransform = 0x58;
+            private static uint oObjPosition = 0x260;
 
             public Transform transform;
 

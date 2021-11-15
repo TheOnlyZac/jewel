@@ -117,7 +117,7 @@
             this.ProcIdTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ProcIdTitle.AutoSize = true;
             this.ProcIdTitle.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.ProcIdTitle.Location = new System.Drawing.Point(10, 294);
+            this.ProcIdTitle.Location = new System.Drawing.Point(10, 401);
             this.ProcIdTitle.Name = "ProcIdTitle";
             this.ProcIdTitle.Size = new System.Drawing.Size(62, 14);
             this.ProcIdTitle.TabIndex = 0;
@@ -128,7 +128,7 @@
             this.ProcIdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ProcIdLabel.AutoSize = true;
             this.ProcIdLabel.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.ProcIdLabel.Location = new System.Drawing.Point(69, 294);
+            this.ProcIdLabel.Location = new System.Drawing.Point(69, 401);
             this.ProcIdLabel.Name = "ProcIdLabel";
             this.ProcIdLabel.Size = new System.Drawing.Size(25, 14);
             this.ProcIdLabel.TabIndex = 1;
@@ -151,7 +151,7 @@
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(370, 294);
+            this.progressBar1.Location = new System.Drawing.Point(370, 401);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(160, 13);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -217,7 +217,7 @@
             this.entitiesSplitContainer.Panel2.Controls.Add(this.SetCamFocusBtn);
             this.entitiesSplitContainer.Panel2.Controls.Add(this.EntityPropsPanelTitle);
             this.entitiesSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.entitiesSplitContainer.Size = new System.Drawing.Size(529, 265);
+            this.entitiesSplitContainer.Size = new System.Drawing.Size(529, 372);
             this.entitiesSplitContainer.SplitterDistance = 195;
             this.entitiesSplitContainer.TabIndex = 8;
             // 
@@ -239,7 +239,7 @@
             this.treeView1.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView1.Location = new System.Drawing.Point(3, 25);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(189, 238);
+            this.treeView1.Size = new System.Drawing.Size(189, 345);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -519,7 +519,7 @@
             this.trainerTabs.Location = new System.Drawing.Point(0, 0);
             this.trainerTabs.Name = "trainerTabs";
             this.trainerTabs.SelectedIndex = 0;
-            this.trainerTabs.Size = new System.Drawing.Size(537, 291);
+            this.trainerTabs.Size = new System.Drawing.Size(537, 398);
             this.trainerTabs.TabIndex = 10;
             // 
             // entitiesTab
@@ -529,7 +529,7 @@
             this.entitiesTab.Location = new System.Drawing.Point(4, 24);
             this.entitiesTab.Name = "entitiesTab";
             this.entitiesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.entitiesTab.Size = new System.Drawing.Size(529, 263);
+            this.entitiesTab.Size = new System.Drawing.Size(529, 370);
             this.entitiesTab.TabIndex = 0;
             this.entitiesTab.Text = "Entities";
             // 
@@ -538,7 +538,7 @@
             this.dagTab.Controls.Add(this.dagSplitContainer);
             this.dagTab.Location = new System.Drawing.Point(4, 24);
             this.dagTab.Name = "dagTab";
-            this.dagTab.Size = new System.Drawing.Size(529, 263);
+            this.dagTab.Size = new System.Drawing.Size(529, 370);
             this.dagTab.TabIndex = 2;
             this.dagTab.Text = "DAG";
             this.dagTab.UseVisualStyleBackColor = true;
@@ -568,7 +568,7 @@
             this.dagSplitContainer.Panel2.Controls.Add(this.dagNodeStateGroupBox);
             this.dagSplitContainer.Panel2.Controls.Add(this.DagPropsPanelTitle);
             this.dagSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dagSplitContainer.Size = new System.Drawing.Size(529, 263);
+            this.dagSplitContainer.Size = new System.Drawing.Size(529, 370);
             this.dagSplitContainer.SplitterDistance = 195;
             this.dagSplitContainer.TabIndex = 9;
             // 
@@ -604,12 +604,14 @@
             this.treeView2.Font = new System.Drawing.Font("Arial", 8F);
             this.treeView2.Location = new System.Drawing.Point(3, 25);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(189, 238);
+            this.treeView2.Size = new System.Drawing.Size(189, 345);
             this.treeView2.TabIndex = 8;
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
             // 
             // dagNodeEdgesGroupBox
             // 
+            this.dagNodeEdgesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dagNodeEdgesGroupBox.Controls.Add(this.dagNodeChildrenLabel);
             this.dagNodeEdgesGroupBox.Controls.Add(this.dagNodeParentsLabel);
             this.dagNodeEdgesGroupBox.Controls.Add(this.dagNodeChildrenListBox);
@@ -617,7 +619,7 @@
             this.dagNodeEdgesGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dagNodeEdgesGroupBox.Location = new System.Drawing.Point(18, 113);
             this.dagNodeEdgesGroupBox.Name = "dagNodeEdgesGroupBox";
-            this.dagNodeEdgesGroupBox.Size = new System.Drawing.Size(261, 130);
+            this.dagNodeEdgesGroupBox.Size = new System.Drawing.Size(261, 237);
             this.dagNodeEdgesGroupBox.TabIndex = 11;
             this.dagNodeEdgesGroupBox.TabStop = false;
             this.dagNodeEdgesGroupBox.Text = "Edges";
@@ -646,22 +648,26 @@
             // 
             // dagNodeChildrenListBox
             // 
+            this.dagNodeChildrenListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dagNodeChildrenListBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dagNodeChildrenListBox.FormattingEnabled = true;
             this.dagNodeChildrenListBox.ItemHeight = 15;
             this.dagNodeChildrenListBox.Location = new System.Drawing.Point(133, 41);
             this.dagNodeChildrenListBox.Name = "dagNodeChildrenListBox";
-            this.dagNodeChildrenListBox.Size = new System.Drawing.Size(120, 79);
+            this.dagNodeChildrenListBox.Size = new System.Drawing.Size(120, 184);
             this.dagNodeChildrenListBox.TabIndex = 10;
             // 
             // dagNodeParentsListBox
             // 
+            this.dagNodeParentsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dagNodeParentsListBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dagNodeParentsListBox.FormattingEnabled = true;
             this.dagNodeParentsListBox.ItemHeight = 15;
             this.dagNodeParentsListBox.Location = new System.Drawing.Point(7, 41);
             this.dagNodeParentsListBox.Name = "dagNodeParentsListBox";
-            this.dagNodeParentsListBox.Size = new System.Drawing.Size(120, 79);
+            this.dagNodeParentsListBox.Size = new System.Drawing.Size(120, 184);
             this.dagNodeParentsListBox.TabIndex = 10;
             // 
             // dagNodeStateGroupBox
@@ -885,7 +891,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(534, 312);
+            this.ClientSize = new System.Drawing.Size(534, 419);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.trainerTabs);
             this.Controls.Add(this.ProcIdLabel);
