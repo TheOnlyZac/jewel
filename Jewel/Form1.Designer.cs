@@ -41,6 +41,15 @@
             this.entitiesSplitContainer = new System.Windows.Forms.SplitContainer();
             this.EntitiesTitle = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.entityScaleGroupBox = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.zScaleTextBox = new System.Windows.Forms.TextBox();
+            this.yScaleTextBox = new System.Windows.Forms.TextBox();
+            this.xScaleTextBox = new System.Windows.Forms.TextBox();
             this.entityPosGroupBox = new System.Windows.Forms.GroupBox();
             this.pastePosBtn = new System.Windows.Forms.Button();
             this.copyPosBtn = new System.Windows.Forms.Button();
@@ -78,20 +87,14 @@
             this.cameraTabTitle = new System.Windows.Forms.Label();
             this.resetCamBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.entityScaleGroupBox = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.zScaleTextBox = new System.Windows.Forms.TextBox();
             this.entityScaleResetBtn = new System.Windows.Forms.Button();
-            this.yScaleTextBox = new System.Windows.Forms.TextBox();
-            this.xScaleTextBox = new System.Windows.Forms.TextBox();
+            this.entityScaleDownBtn = new System.Windows.Forms.Button();
+            this.entityScaleUpBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).BeginInit();
             this.entitiesSplitContainer.Panel1.SuspendLayout();
             this.entitiesSplitContainer.Panel2.SuspendLayout();
             this.entitiesSplitContainer.SuspendLayout();
+            this.entityScaleGroupBox.SuspendLayout();
             this.entityPosGroupBox.SuspendLayout();
             this.trainerTabs.SuspendLayout();
             this.entitiesTab.SuspendLayout();
@@ -107,7 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFadeDistanceValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camZoomValue)).BeginInit();
-            this.entityScaleGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProcIdTitle
@@ -240,6 +242,118 @@
             this.treeView1.Size = new System.Drawing.Size(189, 238);
             this.treeView1.TabIndex = 8;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // entityScaleGroupBox
+            // 
+            this.entityScaleGroupBox.Controls.Add(this.button2);
+            this.entityScaleGroupBox.Controls.Add(this.label2);
+            this.entityScaleGroupBox.Controls.Add(this.button3);
+            this.entityScaleGroupBox.Controls.Add(this.label3);
+            this.entityScaleGroupBox.Controls.Add(this.label4);
+            this.entityScaleGroupBox.Controls.Add(this.zScaleTextBox);
+            this.entityScaleGroupBox.Controls.Add(this.entityScaleUpBtn);
+            this.entityScaleGroupBox.Controls.Add(this.entityScaleDownBtn);
+            this.entityScaleGroupBox.Controls.Add(this.entityScaleResetBtn);
+            this.entityScaleGroupBox.Controls.Add(this.yScaleTextBox);
+            this.entityScaleGroupBox.Controls.Add(this.xScaleTextBox);
+            this.entityScaleGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entityScaleGroupBox.Location = new System.Drawing.Point(157, 52);
+            this.entityScaleGroupBox.Name = "entityScaleGroupBox";
+            this.entityScaleGroupBox.Size = new System.Drawing.Size(125, 127);
+            this.entityScaleGroupBox.TabIndex = 12;
+            this.entityScaleGroupBox.TabStop = false;
+            this.entityScaleGroupBox.Text = "Scale";
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(93, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(15, 15);
+            this.button2.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.button2, "Paste");
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Z";
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.Enabled = false;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(71, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(15, 15);
+            this.button3.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.button3, "Copy");
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "X";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 16);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Y";
+            // 
+            // zScaleTextBox
+            // 
+            this.zScaleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.zScaleTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zScaleTextBox.Location = new System.Drawing.Point(31, 70);
+            this.zScaleTextBox.Name = "zScaleTextBox";
+            this.zScaleTextBox.Size = new System.Drawing.Size(78, 21);
+            this.zScaleTextBox.TabIndex = 9;
+            this.zScaleTextBox.Tag = "z";
+            this.zScaleTextBox.TextChanged += new System.EventHandler(this.scaleTextBox_TextChanged);
+            // 
+            // yScaleTextBox
+            // 
+            this.yScaleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.yScaleTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yScaleTextBox.Location = new System.Drawing.Point(31, 46);
+            this.yScaleTextBox.Name = "yScaleTextBox";
+            this.yScaleTextBox.Size = new System.Drawing.Size(78, 21);
+            this.yScaleTextBox.TabIndex = 9;
+            this.yScaleTextBox.Tag = "y";
+            this.yScaleTextBox.TextChanged += new System.EventHandler(this.scaleTextBox_TextChanged);
+            // 
+            // xScaleTextBox
+            // 
+            this.xScaleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.xScaleTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xScaleTextBox.Location = new System.Drawing.Point(31, 22);
+            this.xScaleTextBox.Name = "xScaleTextBox";
+            this.xScaleTextBox.Size = new System.Drawing.Size(78, 21);
+            this.xScaleTextBox.TabIndex = 9;
+            this.xScaleTextBox.Tag = "x";
+            this.xScaleTextBox.TextChanged += new System.EventHandler(this.scaleTextBox_TextChanged);
             // 
             // entityPosGroupBox
             // 
@@ -621,6 +735,7 @@
             this.camFovValue.Name = "camFovValue";
             this.camFovValue.Size = new System.Drawing.Size(89, 21);
             this.camFovValue.TabIndex = 1;
+            this.camFovValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.camFovValue.ValueChanged += new System.EventHandler(this.camFovValue_ValueChanged);
             // 
             // camFadeDistanceValue
@@ -646,6 +761,7 @@
             this.camFadeDistanceValue.Name = "camFadeDistanceValue";
             this.camFadeDistanceValue.Size = new System.Drawing.Size(89, 21);
             this.camFadeDistanceValue.TabIndex = 1;
+            this.camFadeDistanceValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.camFadeDistanceValue.ValueChanged += new System.EventHandler(this.camFadeDistanceValue_ValueChanged);
             // 
             // camZoomLabel
@@ -681,6 +797,7 @@
             this.camZoomValue.Name = "camZoomValue";
             this.camZoomValue.Size = new System.Drawing.Size(89, 21);
             this.camZoomValue.TabIndex = 1;
+            this.camZoomValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.camZoomValue.ValueChanged += new System.EventHandler(this.camZoomValue_ValueChanged);
             // 
             // camFovLabel
@@ -723,127 +840,45 @@
             this.resetCamBtn.UseVisualStyleBackColor = true;
             this.resetCamBtn.Click += new System.EventHandler(this.resetCamBtn_Click);
             // 
-            // entityScaleGroupBox
-            // 
-            this.entityScaleGroupBox.Controls.Add(this.button2);
-            this.entityScaleGroupBox.Controls.Add(this.label2);
-            this.entityScaleGroupBox.Controls.Add(this.button3);
-            this.entityScaleGroupBox.Controls.Add(this.label3);
-            this.entityScaleGroupBox.Controls.Add(this.label4);
-            this.entityScaleGroupBox.Controls.Add(this.zScaleTextBox);
-            this.entityScaleGroupBox.Controls.Add(this.entityScaleResetBtn);
-            this.entityScaleGroupBox.Controls.Add(this.yScaleTextBox);
-            this.entityScaleGroupBox.Controls.Add(this.xScaleTextBox);
-            this.entityScaleGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entityScaleGroupBox.Location = new System.Drawing.Point(157, 52);
-            this.entityScaleGroupBox.Name = "entityScaleGroupBox";
-            this.entityScaleGroupBox.Size = new System.Drawing.Size(125, 127);
-            this.entityScaleGroupBox.TabIndex = 12;
-            this.entityScaleGroupBox.TabStop = false;
-            this.entityScaleGroupBox.Text = "Scale";
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(93, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(15, 15);
-            this.button2.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.button2, "Paste");
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(15, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Z";
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Enabled = false;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(71, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(15, 15);
-            this.button3.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.button3, "Copy");
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "X";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Y";
-            // 
-            // zScaleTextBox
-            // 
-            this.zScaleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.zScaleTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zScaleTextBox.Location = new System.Drawing.Point(31, 70);
-            this.zScaleTextBox.Name = "zScaleTextBox";
-            this.zScaleTextBox.Size = new System.Drawing.Size(78, 21);
-            this.zScaleTextBox.TabIndex = 9;
-            this.zScaleTextBox.Tag = "z";
-            this.zScaleTextBox.TextChanged += new System.EventHandler(this.scaleTextBox_TextChanged);
-            // 
             // entityScaleResetBtn
             // 
             this.entityScaleResetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.entityScaleResetBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entityScaleResetBtn.Location = new System.Drawing.Point(11, 97);
+            this.entityScaleResetBtn.Location = new System.Drawing.Point(12, 96);
             this.entityScaleResetBtn.Name = "entityScaleResetBtn";
-            this.entityScaleResetBtn.Size = new System.Drawing.Size(98, 23);
+            this.entityScaleResetBtn.Size = new System.Drawing.Size(53, 23);
             this.entityScaleResetBtn.TabIndex = 7;
             this.entityScaleResetBtn.Text = "Reset";
             this.entityScaleResetBtn.UseVisualStyleBackColor = true;
             this.entityScaleResetBtn.Click += new System.EventHandler(this.entityScaleResetBtn_Click);
             // 
-            // yScaleTextBox
+            // entityScaleDownBtn
             // 
-            this.yScaleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.yScaleTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yScaleTextBox.Location = new System.Drawing.Point(31, 46);
-            this.yScaleTextBox.Name = "yScaleTextBox";
-            this.yScaleTextBox.Size = new System.Drawing.Size(78, 21);
-            this.yScaleTextBox.TabIndex = 9;
-            this.yScaleTextBox.Tag = "y";
-            this.yScaleTextBox.TextChanged += new System.EventHandler(this.scaleTextBox_TextChanged);
+            this.entityScaleDownBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.entityScaleDownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.entityScaleDownBtn.Font = new System.Drawing.Font("Arial", 7F);
+            this.entityScaleDownBtn.Location = new System.Drawing.Point(71, 97);
+            this.entityScaleDownBtn.Name = "entityScaleDownBtn";
+            this.entityScaleDownBtn.Size = new System.Drawing.Size(20, 20);
+            this.entityScaleDownBtn.TabIndex = 7;
+            this.entityScaleDownBtn.Tag = "down";
+            this.entityScaleDownBtn.Text = "-";
+            this.entityScaleDownBtn.UseVisualStyleBackColor = true;
+            this.entityScaleDownBtn.Click += new System.EventHandler(this.entityScale_UpDown);
             // 
-            // xScaleTextBox
+            // entityScaleUpBtn
             // 
-            this.xScaleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.xScaleTextBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xScaleTextBox.Location = new System.Drawing.Point(31, 22);
-            this.xScaleTextBox.Name = "xScaleTextBox";
-            this.xScaleTextBox.Size = new System.Drawing.Size(78, 21);
-            this.xScaleTextBox.TabIndex = 9;
-            this.xScaleTextBox.Tag = "x";
-            this.xScaleTextBox.TextChanged += new System.EventHandler(this.scaleTextBox_TextChanged);
+            this.entityScaleUpBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.entityScaleUpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.entityScaleUpBtn.Font = new System.Drawing.Font("Arial", 7F);
+            this.entityScaleUpBtn.Location = new System.Drawing.Point(93, 97);
+            this.entityScaleUpBtn.Name = "entityScaleUpBtn";
+            this.entityScaleUpBtn.Size = new System.Drawing.Size(20, 20);
+            this.entityScaleUpBtn.TabIndex = 7;
+            this.entityScaleUpBtn.Tag = "up";
+            this.entityScaleUpBtn.Text = "+";
+            this.entityScaleUpBtn.UseVisualStyleBackColor = true;
+            this.entityScaleUpBtn.Click += new System.EventHandler(this.entityScale_UpDown);
             // 
             // TrainerMain
             // 
@@ -866,6 +901,8 @@
             this.entitiesSplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entitiesSplitContainer)).EndInit();
             this.entitiesSplitContainer.ResumeLayout(false);
+            this.entityScaleGroupBox.ResumeLayout(false);
+            this.entityScaleGroupBox.PerformLayout();
             this.entityPosGroupBox.ResumeLayout(false);
             this.entityPosGroupBox.PerformLayout();
             this.trainerTabs.ResumeLayout(false);
@@ -887,8 +924,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.camFovValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camFadeDistanceValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camZoomValue)).EndInit();
-            this.entityScaleGroupBox.ResumeLayout(false);
-            this.entityScaleGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -951,9 +986,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox zScaleTextBox;
-        private System.Windows.Forms.Button entityScaleResetBtn;
         private System.Windows.Forms.TextBox yScaleTextBox;
         private System.Windows.Forms.TextBox xScaleTextBox;
+        private System.Windows.Forms.Button entityScaleResetBtn;
+        private System.Windows.Forms.Button entityScaleUpBtn;
+        private System.Windows.Forms.Button entityScaleDownBtn;
     }
 }
 

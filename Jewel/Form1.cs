@@ -115,6 +115,11 @@ namespace Jewel
             {
                 return pointer;
             }
+
+            public void ResetScale()
+            {
+                this.scaleX.X = this.scaleY.Y = this.scaleZ.Z = 1;
+            }
         }
 
         private class Vector
@@ -515,14 +520,21 @@ namespace Jewel
             }
         }
 
-        // Handle scale reset button clicked
-        private void entityScaleResetBtn_Click(object sender, EventArgs e)
+        private void entityScale_UpDown(object sender, EventArgs e)
         {
             if (selectedEntity == null || selectedEntity.transform == null) return;
 
-            selectedEntity.transform.scaleX.X = 1;
-            selectedEntity.transform.scaleY.Y = 1;
-            selectedEntity.transform.scaleZ.Z = 1;
+            Button button = sender as Button;
+
+            float inc = 1;
+            if ((string)button.Tag == "down")
+            {
+                inc = -1;
+            }
+
+            selectedEntity.transform.scaleX.X += inc;
+            selectedEntity.transform.scaleY.Y += inc;
+            selectedEntity.transform.scaleZ.Z += inc;
         }
 
         
@@ -561,6 +573,13 @@ namespace Jewel
         private void camZoomValue_ValueChanged(object sender, EventArgs e)
         {
             camera.zoom = (float)camZoomValue.Value;
+        }
+
+        private void entityScaleResetBtn_Click(object sender, EventArgs e)
+        {
+            if (selectedEntity == null || selectedEntity.transform == null) return;
+
+            selectedEntity.transform.ResetScale();
         }
 
 
