@@ -89,8 +89,8 @@ namespace Jewel
         {
             private uint pointer;
             private static uint oScaleX = 0x0; // Vector
-            private static uint oScaleY = 0x4; // Vector
-            private static uint oScaleZ = 0x8; // Vector
+            private static uint oScaleY = 0x10; // Vector
+            private static uint oScaleZ = 0x20; // Vector
             private static uint oRelPosition = 0x30; // Vector
             private static uint oTruePosition = 0x70; // Vector
 
