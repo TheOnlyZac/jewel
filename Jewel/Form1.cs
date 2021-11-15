@@ -17,6 +17,7 @@ namespace Jewel
         // Init global vars
         private Entity jt, selectedEntity;
         private Camera camera;
+        private DagNode dagHead;
 
         // Form constructor
         public TrainerMain()
@@ -296,8 +297,62 @@ namespace Jewel
             // Resets the camera
             public void Reset()
             {
-                Console.WriteLine((pointer + oResetFlag).ToString("X"));
                 m.WriteMemory((pointer + oResetFlag).ToString("X"), "int", "1");
+            }
+        }
+
+        private class DagNode
+        {
+            private uint pointer;
+            private static uint oId = 0x18;
+            private static uint oState = 0x54;
+            private static uint oNumChildren = 0xa0;
+            private static uint oChildrenArray = 0xa4;
+            private static uint oNumParents = 0x94;
+            private static uint oParentsArray = 0x98;
+            private static uint oJob = 0x7;
+            private static uint oCheckpoint = 0xb8;
+
+            public DagNode(uint pDagNode)
+            {
+                this.pointer = Rebase(pDagNode);
+            }
+
+            public uint getPointer()
+            {
+                return pointer;
+            }
+
+            public uint id
+            {
+                get
+                {
+                    return m.ReadUInt((pointer + oId).ToString("X"));
+                }
+            }
+
+            public uint state
+            {
+                get
+                {
+                    return m.ReadUInt((pointer + oState).ToString("X"));
+                }
+            }
+
+            public List<DagNode> children
+            {
+                get
+                {
+                    uint numChildren = m.ReadUInt((pointer + oNumChildren).ToString("X"));
+                    List<DagNode> children = new List<DagNode>();
+
+                    for (uint i = 0; i < numChildren; i++)
+                    {
+                        uint nodePtr = m.ReadUInt(Rebase(m.ReadUInt((pointer + oChildrenArray).ToString("X")) + (0x4 * i)).ToString("X"));
+                        children.Add(new DagNode(nodePtr));
+                    }
+                    return children;
+                }
             }
         }
 
@@ -305,7 +360,7 @@ namespace Jewel
         /* Entities Tab */
 
         // Populate fkxentries list with all FKX entries in ram
-        public async void FindFkxEntries()
+        public async void PopulateFkxTreeView()
         {
             ArrayList fkxEntries = new ArrayList();
 
@@ -339,13 +394,6 @@ namespace Jewel
             // Populate tree view with nodes
             foreach(FkxEntry fkx in fkxEntries)
             {
-                if (fkx.name == "jt")
-                {
-                    Console.WriteLine(String.Format("On {0}", fkx.name));
-                    Console.WriteLine(fkx.poolSize);
-                    Console.WriteLine(fkx.poolArray.ToString("X"));
-                }
-
                 // Create node with FKX entry attached
                 TreeNode fkxNode = new TreeNode(fkx.name);
                 fkxNode.Tag = fkx;
@@ -371,7 +419,6 @@ namespace Jewel
                     // Create entity node
                     uint entityPtr = m.ReadUInt(Rebase(fkx.poolArray + (0x4 * i)).ToString("X"));
                     TreeNode entityNode = new TreeNode(entityPtr.ToString("X"));
-                    Console.WriteLine(entityNode);
 
                     // Attach entity to node
                     entityNode.Tag = new Entity(entityPtr);
@@ -387,24 +434,24 @@ namespace Jewel
             treeView1.Sort();
             treeView1.EndUpdate();
 
-            // Reset progress bar
+            // Complete progress bar
             progressBar1.Invoke((MethodInvoker)delegate
             {
                 progressBar1.Maximum = 100;
-                progressBar1.Value = 0;
+                progressBar1.Value = 100;
             });
         }
 
         // Handle Entity refresh button click
         private void FkxRefreshBtn_Click(object sender, EventArgs e)
         {
-            this.FindFkxEntries();
+            this.PopulateFkxTreeView();
         }
 
         // Handle Entity treelist select
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            EntityIdLabel.Invoke((MethodInvoker)delegate
+            EntityPropsPanelTitle.Invoke((MethodInvoker)delegate
             {
                 if (e.Node.Tag is Entity)
                 {
@@ -427,13 +474,13 @@ namespace Jewel
                 switch (textBox.Tag)
                 {
                     case "x":
-                        selectedEntity.transform.relPosition.X = val;
+                        //selectedEntity.transform.relPosition.X = val;
                         break;
                     case "y":
-                        selectedEntity.transform.relPosition.Y = val;
+                        //selectedEntity.transform.relPosition.Y = val;
                         break;
                     case "z":
-                        selectedEntity.transform.relPosition.Z = val;
+                        //selectedEntity.transform.relPosition.Z = val;
                         break;
                     default:
                         break;
@@ -537,10 +584,86 @@ namespace Jewel
             selectedEntity.transform.scaleZ.Z += inc;
         }
 
-        
+
         /* DAG Tab */
 
-        // todo
+        private void refreshDagBtn_Click(object sender, EventArgs e)
+        {
+            dagHead = new DagNode(m.ReadUInt("203e0b04"));
+            ArrayList dagNodes = new ArrayList();
+            List<uint> visited = new List<uint>();
+
+            // start progress bar
+            progressBar1.Invoke((MethodInvoker)delegate
+            {
+                progressBar1.Maximum = 100;
+                progressBar1.Value = 10;
+            });
+
+            // Prepare tree view for update and clear it
+            treeView1.BeginUpdate();
+            treeView1.Nodes.Clear();
+
+            // Populate tree view
+            PopulateDagChildren(dagHead, visited);
+
+            // Sort tree view and re-enable update
+            //treeView1.Sort();
+            treeView1.EndUpdate();
+
+            // complete progress bar
+            progressBar1.Invoke((MethodInvoker)delegate
+            {
+                progressBar1.Maximum = 100;
+                progressBar1.Value = 100;
+            });
+        }
+
+        // Recursively populate the tree view with the given node's children
+        private void PopulateDagChildren(DagNode node, List<uint> visited)
+        {
+            // Create tree node with this dag node attached
+            TreeNode treeNode = new TreeNode(node.getPointer().ToString("X"));
+            treeNode.Tag = node;
+
+            // Add tree node to tree view
+            treeView2.Nodes.Add(treeNode);
+
+            // Mark this node as visited
+            visited.Add(node.id);
+
+            // Iterate over node chidren
+            foreach (DagNode child in node.children)
+            {
+                // Populate children ONLY if this child was not already visited
+                if (!visited.Contains(child.id)) PopulateDagChildren(child, visited);
+            }
+        }
+
+        // Handle dagnode treelist select
+        private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            DagNode dagNode;
+            if (e.Node.Tag is DagNode)
+            {
+                // Get DagNode from tag of selected tree view item
+                dagNode = e.Node.Tag as DagNode;
+
+                // Update tab title with node id
+                DagPropsPanelTitle.Invoke((MethodInvoker)delegate
+                {
+                    DagPropsPanelTitle.Text = dagNode.getPointer().ToString("X");
+                });
+
+                // Update node state combo box
+                dagNodeStateCombo.Invoke((MethodInvoker)delegate
+                {
+                    Console.WriteLine(String.Format("State: {0}", dagNode.state));
+                    Console.WriteLine(dagNodeStateCombo.Items[3]);
+                    dagNodeStateCombo.SelectedIndex = (int)dagNode.state;
+                });
+            }
+        }
 
 
         /* Camera Tab */
@@ -662,9 +785,9 @@ namespace Jewel
                 if (selectedEntity != null)
                 {
                     // Write entity pointer to UI
-                    EntityIdLabel.Invoke((MethodInvoker)delegate
+                    EntityPropsPanelTitle.Invoke((MethodInvoker)delegate
                     {
-                        EntityIdLabel.Text = selectedEntity.getPointer().ToString("X");
+                        EntityPropsPanelTitle.Text = selectedEntity.getPointer().ToString("X");
                     });
 
                     // Check if entity has a Transform
