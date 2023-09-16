@@ -461,7 +461,7 @@
             this.WarpToBtn.Name = "WarpToBtn";
             this.WarpToBtn.Size = new System.Drawing.Size(98, 23);
             this.WarpToBtn.TabIndex = 7;
-            this.WarpToBtn.Text = "Warp To";
+            this.WarpToBtn.Text = "Teleport Here";
             this.WarpToBtn.UseVisualStyleBackColor = true;
             this.WarpToBtn.Click += new System.EventHandler(this.WarpToBtn_Click);
             // 
@@ -726,7 +726,7 @@
             this.cameraTab.Location = new System.Drawing.Point(4, 24);
             this.cameraTab.Name = "cameraTab";
             this.cameraTab.Padding = new System.Windows.Forms.Padding(3);
-            this.cameraTab.Size = new System.Drawing.Size(529, 263);
+            this.cameraTab.Size = new System.Drawing.Size(529, 370);
             this.cameraTab.TabIndex = 1;
             this.cameraTab.Text = "Camera";
             this.cameraTab.UseVisualStyleBackColor = true;

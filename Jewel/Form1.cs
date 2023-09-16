@@ -475,13 +475,13 @@ namespace Jewel
                 switch (textBox.Tag)
                 {
                     case "x":
-                        //selectedEntity.transform.relPosition.X = val;
+                        selectedEntity.transform.relPosition.X = val;
                         break;
                     case "y":
-                        //selectedEntity.transform.relPosition.Y = val;
+                        selectedEntity.transform.relPosition.Y = val;
                         break;
                     case "z":
-                        //selectedEntity.transform.relPosition.Z = val;
+                        selectedEntity.transform.relPosition.Z = val;
                         break;
                     default:
                         break;
